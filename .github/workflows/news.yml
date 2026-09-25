@@ -1,0 +1,109 @@
+name: 아침 뉴스 받기
+
+on:
+  schedule:
+    - cron: '0 21 * * *'   # 매일 한국 시간 오전 6시 (몇 분~수십 분 늦어질 수 있음)
+  workflow_dispatch:        # Actions 화면의 Run workflow 버튼으로 직접 실행
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: GNews에서 뉴스 받기
+        env:
+          GNEWS_KEY: ${{ secrets.GNEWS_KEY }}
+        run: |
+          cat > /tmp/fetch-news.mjs <<'EOF'
+          // 매일 아침 GitHub Actions가 실행하는 스크립트.
+          // GNews에서 분야별 뉴스를 받아 news.json으로 저장합니다. API 키는 저장소 Secrets(GNEWS_KEY)에서만 읽습니다.
+          import { writeFile } from 'node:fs/promises';
+          import { pathToFileURL } from "node:url";
+          await import(pathToFileURL(process.cwd() + "/sections.js").href);
+
+          const KEY = process.env.GNEWS_KEY;
+          if (!KEY) {
+            console.error('GNEWS_KEY가 없습니다. 저장소 Settings → Secrets and variables → Actions에 GNEWS_KEY를 추가하세요.');
+            process.exit(1);
+          }
+
+          const SECTIONS = globalThis.NEWS_SECTIONS;
+          const sleep = ms => new Promise(r => setTimeout(r, ms));
+          let requests = 0;
+
+          async function gnews(req, max) {
+            const base = 'https://gnews.io/api/v4/';
+            const common = `lang=ko&country=kr&max=${max}&apikey=${encodeURIComponent(KEY)}`;
+            let url;
+            if (req.cat) url = `${base}top-headlines?category=${req.cat}&${common}`;
+            else {
+              const from = new Date(Date.now() - (req.days || 1.5) * 864e5).toISOString().split('.')[0] + 'Z';
+              url = `${base}search?q=${encodeURIComponent(req.q)}&sortby=publishedAt&from=${from}&${common}`;
+            }
+            requests++;
+            const r = await fetch(url);
+            const j = await r.json().catch(() => ({}));
+            if (!r.ok) {
+              const err = new Error((j.errors && [].concat(j.errors)[0]) || ('HTTP ' + r.status));
+              err.status = r.status;
+              throw err;
+            }
+            return (j.articles || []).map(a => ({
+              title: a.title, url: a.url, src: (a.source && a.source.name) || '', time: a.publishedAt || ''
+            }));
+          }
+
+          const sections = {}, errors = {};
+          const used = new Set();
+          let first = true;
+
+          for (const s of SECTIONS) {
+            const per = Math.min(10, Math.ceil(s.n / s.reqs.length));
+            const items = [];
+            for (const req of s.reqs) {
+              if (!first) await sleep(1200);
+              first = false;
+              try {
+                items.push(...await gnews(req, per));
+              } catch (e) {
+                console.error(`[${s.name}] ${e.status || ''} ${e.message}`);
+                errors[s.id] = e.message;
+                // 키·계정·한도 문제면 더 요청해도 소용없으므로 중단하고 기존 news.json을 그대로 둡니다.
+                if ([401, 403, 429].includes(e.status)) process.exit(1);
+              }
+            }
+            const clean = [];
+            for (const it of items) {
+              const k = (it.title || '').replace(/\s+/g, '');
+              if (!k || used.has(k)) continue;
+              used.add(k);
+              clean.push(it);
+              if (clean.length >= s.n) break;
+            }
+            sections[s.id] = clean;
+            console.log(`${s.name}: ${clean.length}/${s.n}`);
+          }
+
+          const total = Object.values(sections).reduce((n, a) => n + a.length, 0);
+          if (!total) {
+            console.error('받은 기사가 없습니다. 기존 news.json을 유지합니다.');
+            process.exit(1);
+          }
+
+          await writeFile('news.json', JSON.stringify({ updatedAt: new Date().toISOString(), requests, total, sections, errors }, null, 1));
+          console.log(`완료: 기사 ${total}건, 요청 ${requests}회`);
+          EOF
+          node /tmp/fetch-news.mjs
+      - name: news.json 저장
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news.json
+          git diff --cached --quiet || git commit -m "뉴스 업데이트 $(TZ=Asia/Seoul date +%F)"
+          git push
