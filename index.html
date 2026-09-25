@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>아침 뉴스 브리핑</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="뉴스 브리핑">
+<meta name="theme-color" content="#E4E9F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#272C35" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#E4E9F1; --sh-d:#BDC6D4; --sh-l:#FFFFFF;
+  --ink:#2C3748; --ink-2:#667389; --ink-3:#95A0B2;
+  --accent:#3C6BD6; --sun:#E0872F; --ok:#2E9E6B; --warn:#D0612E;
+  --line:rgba(44,55,72,.08);
+  --r-lg:26px; --r-md:18px; --r-sm:12px;
+  --display:"Hahmlet", "Noto Serif KR", Georgia, serif;
+  --body:"IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#272C35; --sh-d:#1B1F26; --sh-l:#333A45;
+    --ink:#E4E9F1; --ink-2:#A2ADBE; --ink-3:#6F7A8C;
+    --accent:#86A8F2; --sun:#F2A961; --ok:#5CCB98; --warn:#F08A5D;
+    --line:rgba(228,233,241,.07);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#272C35; --sh-d:#1B1F26; --sh-l:#333A45;
+  --ink:#E4E9F1; --ink-2:#A2ADBE; --ink-3:#6F7A8C;
+  --accent:#86A8F2; --sun:#F2A961; --ok:#5CCB98; --warn:#F08A5D;
+  --line:rgba(228,233,241,.07);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--body);padding:32px 20px 64px;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.raised{background:var(--bg);border-radius:var(--r-lg);box-shadow:9px 9px 20px var(--sh-d),-9px -9px 20px var(--sh-l)}
+.inset{background:var(--bg);box-shadow:inset 4px 4px 9px var(--sh-d),inset -4px -4px 9px var(--sh-l)}
+.btn{border:0;cursor:pointer;background:var(--bg);border-radius:14px;padding:10px 16px;font-weight:500;color:var(--ink-2);
+  box-shadow:5px 5px 11px var(--sh-d),-5px -5px 11px var(--sh-l);transition:box-shadow .18s,color .18s;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{color:var(--ink)}
+.btn:active{box-shadow:inset 4px 4px 8px var(--sh-d),inset -4px -4px 8px var(--sh-l);color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.round{width:46px;height:46px;padding:0;justify-content:center;border-radius:50%}
+.btn.primary{color:var(--accent);font-weight:600}
+.btn.danger{color:var(--warn)}
+.btn svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.spin svg{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.wrap{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:30px}
+
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+.hello{display:flex;flex-direction:column;gap:6px;min-width:0}
+.eyebrow{font-size:12.5px;letter-spacing:.14em;color:var(--ink-3);font-weight:600}
+.hello h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.4vw,46px);line-height:1.15;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.hello h1 .sun{color:var(--sun)}
+.summary{color:var(--ink-2);margin:0;font-size:15px}
+.summary b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.clock{border-radius:20px;padding:10px 20px;font-family:var(--mono);font-size:28px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.clock small{font-size:14px;color:var(--ink-3);margin-left:4px}
+.mode{border:0;cursor:pointer;border-radius:999px;padding:10px 16px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:8px;color:var(--ink-2)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 3px color-mix(in srgb,var(--sun) 22%,transparent)}
+.mode.live .dot{background:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 22%,transparent)}
+
+/* category jump bar */
+.jump{display:flex;gap:10px;flex-wrap:wrap}
+.chip{border:0;cursor:pointer;padding:8px 15px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--ink-2);background:var(--bg);box-shadow:4px 4px 9px var(--sh-d),-4px -4px 9px var(--sh-l)}
+.chip:hover{color:var(--accent)}
+.chip:active{box-shadow:inset 3px 3px 7px var(--sh-d),inset -3px -3px 7px var(--sh-l)}
+.chip .c{font-family:var(--mono);font-size:11.5px;margin-left:5px;color:var(--ink-3)}
+
+/* boards */
+.board{display:grid;gap:30px;align-items:start}
+.board.big{grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr))}
+.board.small{grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))}
+.panel{padding:22px 24px 24px;display:flex;flex-direction:column;gap:12px;min-width:0;scroll-margin-top:20px}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.panel-head h2{margin:0;font-family:var(--display);font-size:21px;font-weight:700;display:flex;align-items:baseline;gap:10px}
+.panel-head h2 .cnt{font-family:var(--mono);font-size:13px;color:var(--ink-3);font-weight:500}
+.group-label{font-size:12.5px;letter-spacing:.14em;color:var(--ink-3);font-weight:600;margin:0 0 -14px 4px}
+.tag{padding:3px 10px;border-radius:999px;font-weight:600;font-size:11.5px;letter-spacing:.02em}
+.tag.mock{color:var(--sun)} .tag.live{color:var(--ok)} .tag.err{color:var(--warn)} .tag.wait{color:var(--ink-3)}
+.note{font-size:12.5px;color:var(--warn);margin:0;line-height:1.5}
+.sub{margin:-6px 0 0;font-size:12.5px;color:var(--ink-3);display:flex;align-items:center;gap:8px}
+.sub .mine{color:var(--accent);font-weight:600;font-size:11px;padding:1px 8px;border-radius:999px;background:color-mix(in srgb,var(--accent) 12%,transparent)}
+
+/* politics strip: 3 headlines side by side */
+.panel.strip .news{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));column-gap:26px}
+.panel.strip .news li{border-top:0}
+
+.news{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.news li{border-top:1px solid var(--line)}
+.news li:first-child{border-top:0}
+.news a,.news .row{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:9px 2px;font-size:15px;line-height:1.5;text-wrap:pretty}
+.news a:hover .h{color:var(--accent)}
+.news .n{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);padding-top:2px;font-variant-numeric:tabular-nums}
+.news li:nth-child(-n+3) .n{color:var(--accent)}
+.news .h.fresh::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--sun);margin-left:7px;vertical-align:middle}
+.empty{color:var(--ink-3);font-size:14px;padding:8px 2px}
+.sk{height:14px;border-radius:8px;margin:12px 2px;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.45}}
+
+/* settings drawer */
+.scrim{position:fixed;inset:0;background:rgba(20,26,36,.28);backdrop-filter:blur(2px);z-index:20}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);z-index:21;border-radius:28px 0 0 28px;
+  padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px));overflow-y:auto;display:flex;flex-direction:column;gap:20px}
+.drawer h2{margin:0;font-family:var(--display);font-size:24px}
+.drawer .intro{margin:0;color:var(--ink-2);font-size:13.5px}
+.box{padding:18px;border-radius:var(--r-md);display:flex;flex-direction:column;gap:12px;box-shadow:5px 5px 12px var(--sh-d),-5px -5px 12px var(--sh-l)}
+.box h3{margin:0;font-size:15px}
+label{font-size:13px;font-weight:600;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+.field{display:flex;gap:8px;align-items:center}
+.field input{flex:1;min-width:0}
+input[type=text],input[type=password],input[type=number]{border:0;border-radius:12px;padding:11px 13px;background:var(--bg);font-size:14px;color:var(--ink);
+  box-shadow:inset 3px 3px 7px var(--sh-d),inset -3px -3px 7px var(--sh-l)}
+.help{font-size:12.5px;color:var(--ink-3);line-height:1.6;margin:0}
+.help a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.help b{color:var(--ink-2)}
+.plan{width:100%;border-collapse:collapse;font-size:13px}
+.plan td{padding:5px 2px;border-top:1px solid var(--line);color:var(--ink-2)}
+.plan td:last-child{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.plan tr:first-child td{border-top:0}
+.plan tfoot td{color:var(--ink);font-weight:600}
+.meter{height:10px;border-radius:999px;overflow:hidden}
+.meter span{display:block;height:100%;background:var(--accent);border-radius:999px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:30;padding:12px 20px;border-radius:14px;font-size:14px;font-weight:500;max-width:calc(100% - 32px)}
+
+@media (max-width:520px){
+  body{padding:22px 16px 48px}
+  .panel{padding:20px 16px 22px}
+  .clock{font-size:22px}
+  .drawer{border-radius:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="hello">
+      <span class="eyebrow" id="dateLine">—</span>
+      <h1 id="greet">좋은 아침입니다<span class="sun">.</span></h1>
+      <p class="summary" id="summary">뉴스를 모으고 있습니다.</p>
+    </div>
+    <div class="controls">
+      <div class="clock inset" id="clock" aria-label="현재 시각">--:--</div>
+      <button class="mode raised" id="modeBtn" title="뉴스 연결 설정 열기"><span class="dot"></span><span id="modeText">샘플 데이터</span></button>
+      <button class="btn round" id="refreshBtn" title="오늘 받은 뉴스 보기" aria-label="오늘 뉴스 보기"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg></button>
+      <button class="btn round" id="themeBtn" title="밝기 테마 전환" aria-label="테마 전환"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <button class="btn round" id="settingsBtn" title="설정" aria-label="설정 열기"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+    </div>
+  </header>
+
+  <nav class="jump" id="jump" aria-label="분야 바로가기"></nav>
+
+  <div id="boardTop"></div>
+  <div class="board big" id="boardBig"></div>
+  <p class="group-label">교육 · 성장</p>
+  <div class="board small" id="boardGrow"></div>
+  <p class="group-label">의료 · AI · 미래</p>
+  <div class="board small" id="boardMine"></div>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer raised" id="drawer" hidden aria-labelledby="h-set" role="dialog" aria-modal="true">
+  <div class="panel-head">
+    <h2 id="h-set">뉴스 연결</h2>
+    <button class="btn round" id="closeSet" aria-label="설정 닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <p class="intro">키가 없으면 샘플 뉴스를 보여줍니다. GNews 무료 키를 넣고 저장하면 실제 한국 뉴스로 바뀝니다. 키는 이 브라우저에만 저장됩니다.</p>
+
+  <form id="setForm" autocomplete="off" style="display:flex;flex-direction:column;gap:20px">
+    <div class="box">
+      <label for="newsKey">GNews API 키
+        <span class="field"><input type="password" id="newsKey" placeholder="예: 3f9a1c…"><button type="button" class="btn" id="peek">보기</button></span>
+      </label>
+      <p class="help"><a href="https://gnews.io" target="_blank" rel="noopener">gnews.io</a>에서 무료로 가입하면 대시보드에서 키를 바로 받을 수 있습니다. 무료 플랜은 <b>하루 100회 요청, 요청 1회당 최대 10건</b>입니다.</p>
+    </div>
+
+    <div class="box">
+      <h3>무료 한도 안에서 쓰는 방식</h3>
+      <table class="plan" id="planTable"></table>
+      <p class="help"><b>하루에 한 번만 업데이트합니다.</b> 그날 처음 열 때 뉴스를 받아 저장해 두고, 같은 날에는 다시 요청하지 않습니다. 하루 사용량은 19회로, 무료 한도 100회 안에 넉넉히 들어갑니다.</p>
+      <div>
+        <p class="help" id="quotaText" style="margin-bottom:8px"></p>
+        <div class="meter inset"><span id="quotaBar" style="width:0"></span></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" type="submit">저장하고 불러오기</button>
+      <button class="btn danger" id="clearKey" type="button">키 지우기</button>
+    </div>
+  </form>
+</aside>
+<div class="toast raised" id="toast" hidden role="status"></div>
+
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+/* ---------- 분야 구성 (요청 1회 = 최대 10건) ----------
+   cat: GNews top-headlines 분류, q: 검색어(최근 24시간) */
+const SECTIONS = [
+  { id:'politics', name:'정치',         n:3,  place:'top', reqs:[{ q:'정치 OR 국회 OR 대통령실' }] },
+  { id:'economy',  name:'경제',         n:20, place:'big', reqs:[{ cat:'business' }, { q:'경제 OR 금리 OR 증시 OR 부동산' }] },
+  { id:'society',  name:'사회',         n:20, place:'big', reqs:[{ cat:'nation' }, { q:'사회 OR 사건 OR 복지 OR 노동' }] },
+  { id:'world',    name:'세계',         n:20, place:'big', reqs:[{ cat:'world' }, { q:'국제 OR 외신 OR 미국 OR 중국 OR 일본' }] },
+  { id:'tech',     name:'IT·과학·미래', n:20, place:'big', reqs:[{ cat:'technology' }, { cat:'science' }] },
+  { id:'edu',      name:'교육',         n:10, place:'grow', sub:'입시·학교·대학, 최근 2일', reqs:[{ q:'교육 OR 입시 OR 학교 OR 대학', days:2 }] },
+  { id:'study',    name:'유학',         n:10, place:'grow', mine:true, sub:'해외 대학·유학생·비자, 최근 7일', reqs:[{ q:'유학 OR 유학생 OR "해외 대학" OR 어학연수 OR "학생 비자"', days:7 }] },
+  { id:'work',     name:'일 잘하는 법', n:10, place:'grow', mine:true, sub:'업무 효율·협업·리더십, 최근 7일', reqs:[{ q:'"업무 효율" OR 일잘러 OR 협업 OR 리더십 OR "회의 문화" OR 생산성', days:7 }] },
+  { id:'speech',   name:'말 잘하는 법', n:10, place:'grow', mine:true, sub:'대화법·발표·스피치, 최근 7일', reqs:[{ q:'대화법 OR 화법 OR 스피치 OR 발표 OR 말하기 OR 소통법', days:7 }] },
+  { id:'growth',   name:'자기계발',     n:10, place:'grow', mine:true, sub:'습관·독서·공부법, 최근 7일', reqs:[{ q:'자기계발 OR 습관 OR 독서 OR 공부법 OR 루틴 OR 동기부여', days:7 }] },
+  { id:'eye',      name:'안과·눈 건강', n:10, place:'mine', mine:true, sub:'망막·백내장·녹내장, 최근 7일', reqs:[{ q:'안과 OR 망막 OR 황반변성 OR 녹내장 OR 백내장 OR 시력', days:7 }] },
+  { id:'medical',  name:'의료·병원',    n:10, place:'mine', mine:true, sub:'의료 정책·병원·전공의, 최근 2일', reqs:[{ q:'의료 OR 병원 OR 의대 OR 전공의 OR 건강보험', days:2 }] },
+  { id:'health',   name:'건강',         n:10, place:'mine', mine:true, sub:'건강 분야 주요 뉴스', reqs:[{ cat:'health' }] },
+  { id:'ai',       name:'AI',           n:10, place:'mine', mine:true, sub:'생성형 AI·AI 에이전트·활용, 최근 2일', reqs:[{ q:'"생성형 AI" OR "AI 에이전트" OR 챗GPT OR 클로드 OR 제미나이 OR "AI 활용"', days:2 }] },
+  { id:'future',   name:'미래',         n:10, place:'mine', mine:true, sub:'미래 사회·트렌드·로봇·우주, 최근 3일', reqs:[{ q:'"미래 사회" OR "미래 기술" OR 트렌드 OR 로봇 OR 우주 OR 휴머노이드', days:3 }] }
+];
+const REQ_PER_LOAD = SECTIONS.reduce((s, x) => s + x.reqs.length, 0);
+const DAILY_LIMIT = 100;
+
+/* ---------- 샘플 뉴스 ---------- */
+const MOCK = {
+  politics:[
+    '여야, 내년도 예산안 심사 일정 합의…다음 달 본격 착수',
+    '국회 행안위, 지방자치법 개정안 소위 통과',
+    '대통령실 “민생 법안 연내 처리에 총력”'
+  ],
+  economy:[
+    '한은, 기준금리 동결…“물가 흐름 더 지켜볼 것”',
+    '코스피 외국인 순매수 전환…반도체 대형주 강세',
+    '원·달러 환율 1,340원대 등락…수출 기업 실적 개선 기대',
+    '8월 경상수지 흑자 이어가…반도체 수출 호조 영향',
+    '소비자물가 2%대 초반 안정…농산물 가격은 여전히 높아',
+    '주택담보대출 금리 소폭 하락…신규 대출 수요 회복세',
+    '정부, 소상공인 전기요금 지원 연장 검토',
+    '국제유가 배럴당 70달러 초반…중동 긴장 완화 영향',
+    '반도체 업계, 차세대 HBM 양산 경쟁 본격화',
+    '공정위, 온라인 플랫폼 수수료 실태 조사 착수',
+    '가계부채 증가세 둔화…금융당국 “관리 기조 유지”',
+    '수도권 아파트 거래량 석 달 연속 증가',
+    '청년 일자리 지원금 다음 달부터 신청 접수',
+    'K-푸드 수출 역대 최대…라면·김 수출 두 자릿수 증가',
+    '배터리 업계, 북미 공장 가동률 조정 나서',
+    '은행권, 고령층 대상 디지털 금융교육 확대',
+    '국민연금 기금운용 수익률 상반기 7%대 기록',
+    '중소기업 수출 바우처 2차 모집 시작',
+    '카드 결제액 증가세…외식·여행 소비 회복',
+    '기재부 “내년 성장률 2% 안팎 전망”'
+  ],
+  society:[
+    '전국 대체로 맑고 일교차 커…아침 최저 12도',
+    '지자체 공공 산후조리원 확대…이용료 절반 수준',
+    '서울시, 심야 자율주행 버스 노선 확대',
+    '최저임금 적용 업종 실태조사 착수',
+    '이번 주말 고속도로 교통량 평소보다 10% 많을 듯',
+    '경찰, 보이스피싱 조직 총책 등 30여 명 검거',
+    '도심 공유 킥보드 주차 구역 지정 확대',
+    '전세사기 피해 지원 특별법 개정안 시행',
+    '미세먼지 계절관리제 앞두고 사업장 점검 강화',
+    '택배 노동자 휴식권 보장 합의안 마련',
+    '출생아 수 15개월 연속 증가…저출생 대책 효과 주목',
+    '노인 일자리 사업 참여자 역대 최대',
+    '지하철 9호선 증차 완료…출근길 혼잡도 완화 기대',
+    '대학가 원룸 월세 상승세 이어져',
+    '장애인 이동권 개선…저상버스 도입률 70% 넘어',
+    '산림청, 가을철 산불 조심 기간 앞당겨 시행',
+    '1인 가구 비율 36% 돌파…통계청 조사',
+    '반려동물 미등록 과태료 부과 본격화',
+    '올여름 온열질환자 누적 3천 명 넘어',
+    '청소년 SNS 이용 시간 제한 논의 본격화'
+  ],
+  world:[
+    '美 연준 위원들 “추가 금리 인하는 신중해야”',
+    '유엔총회 기후 세션 개막…각국 감축 목표 점검',
+    '중국 3분기 성장률 4%대 후반 전망',
+    '엔화 약세 지속…日 당국 “과도한 변동 주시”',
+    'EU, AI법 고위험 규정 적용 일정 확정',
+    '우크라이나·러시아, 포로 교환 합의',
+    '인도, 반도체 공장 추가 유치…공급망 재편 가속',
+    '중동 휴전 협상 재개…카타르서 실무 회담',
+    '영국 정부, 의료 인력 확충 계획 발표',
+    '독일 제조업 지수 반등…경기 바닥론 확산',
+    '호주, 청소년 SNS 금지법 시행 1년 평가 착수',
+    '美 빅테크 반독점 소송 1심 판결 임박',
+    '브라질 아마존 산림 파괴 면적 감소',
+    '프랑스 파업으로 파리 대중교통 일부 차질',
+    'WHO, 감염병 대응 국제 협약 후속 논의',
+    '美·中 군사 대화 재개…대만 해협 긴장 완화 모색',
+    '캐나다 산불 시즌 종료…피해 면적 예년 수준',
+    '아세안 정상회의, 디지털 경제 협정 서명',
+    '남아공, 전력난 완화로 순환 정전 중단',
+    '국제 금값 사상 최고치 경신'
+  ],
+  tech:[
+    'AI 기본법 시행령 입법예고…고위험 AI 기준 구체화',
+    '국산 인공위성 영상 민간 개방 확대',
+    '누리호 5차 발사 준비 순항…위성 탑재 완료',
+    '2나노 공정 모바일 칩 양산 발표',
+    '국내 포털, 한국어 특화 AI 모델 새 버전 공개',
+    '메신저 기업, AI 비서 서비스 정식 출시',
+    '정부, 양자컴퓨팅 연구 인프라에 대규모 투자',
+    '6G 표준화 논의 본격화…국내 기업 특허 확보 경쟁',
+    '스마트폰 AI 기능 사용률 절반 넘어',
+    '전고체 배터리 수명 두 배 늘리는 소재 개발',
+    '해킹 피해 신고 전년보다 20% 증가…중소기업 취약',
+    '달 탐사선 다누리 임무 연장 확정',
+    '새 모바일 운영체제 업데이트 배포 시작',
+    '오픈소스 AI 모델 도입 기업 늘어',
+    '드론 배송 상용화 시범 지역 확대',
+    '기상청, AI 기반 초단기 강수 예측 서비스 시작',
+    '전기차 충전 표준 통합…충전소 호환성 개선',
+    '알츠하이머 조기 진단 혈액검사 정확도 90% 달성',
+    '우주항공청, 민간 발사체 기업 지원 확대',
+    '클라우드 보안 인증 제도 개편안 발표'
+  ],
+  edu:[
+    '2028 대입 개편안 세부 시행계획 발표…내신 5등급제 안착 과제',
+    '수능 D-50…수험생 막바지 학습 전략은',
+    '초등 늘봄학교 참여율 80% 넘어서',
+    'AI 디지털교과서 도입 1년…현장 평가 엇갈려',
+    '의대 정원 조정 후 첫 수시 경쟁률 발표',
+    '고교학점제 전면 시행…선택과목 쏠림 여전',
+    '대학 등록금 동결 기조 흔들…사립대 인상 검토',
+    '학교폭력 전담조사관 제도 확대 시행',
+    '교사 행정업무 경감 방안 발표…공문 30% 감축',
+    '유보통합 시범기관 확대…영유아 교육·보육 일원화 속도'
+  ],
+  eye:[
+    '국내 연구진, 황반변성 유전자치료 임상 2상 착수',
+    '당뇨망막병증 AI 안저 판독, 1차 의료기관 시범사업 시작',
+    '녹내장 환자 100만 명 시대…“40세 이후 정기 검진 필수”',
+    '고도근시 청소년 늘어…스마트폰 사용 시간과 연관',
+    '습성 황반변성 신규 주사제 보험 적용 확대',
+    '백내장 수술 후 다초점 렌즈 만족도 조사 결과 발표',
+    '환절기 안구건조증 환자 증가…실내 습도 관리 중요',
+    '망막박리 조기 증상 “비문증 갑자기 늘면 바로 진료”',
+    '안과학회, 어린이 근시 억제 치료 가이드라인 개정',
+    '인공망막 임상 결과 해외 학술지 게재'
+  ],
+  medical:[
+    '복지부, 필수의료 지역 수가 가산 확대 추진',
+    '전공의 수련환경 개선안 발표…연속 근무 시간 단축',
+    '응급실 안내 앱 개편…실시간 병상 정보 제공',
+    '비대면 진료 제도화 법안 국회 상임위 논의',
+    '건강보험 재정 올해 흑자 전망…보장성 강화 요구 커져',
+    '지역 거점 병원 전문의 채용 지원금 확대',
+    '상급종합병원 구조 전환 2단계 착수',
+    '의사 국가시험 실기 일정 발표…응시 인원 회복세',
+    '실손보험 청구 간소화 병원급 이어 의원급 확대',
+    '의료분쟁 조정 신청 증가…설명의무 강화 필요성 제기'
+  ],
+  ai:[
+    '생성형 AI 업무 활용 직장인 절반 넘어…“보고서 작성에 가장 많이 써”',
+    'AI 에이전트가 메일·일정 관리…기업 도입 확산',
+    '엑셀에 AI 비서 기능 본격 탑재…데이터 분석 자동화',
+    '병원 행정에 AI 도입…의무기록 요약 시간 절반으로',
+    '공공기관, 생성형 AI 활용 가이드라인 개정',
+    'AI 회의록 요약 서비스 경쟁 치열',
+    '논문 검색·요약 AI 도구 연구자 사이 확산',
+    '직장인 AI 자격증 응시자 급증…실무 활용 능력 검증',
+    '1인 병원·소규모 사업장용 AI 업무 도구 출시 잇따라',
+    '한국어 음성 AI 비서 정확도 크게 개선'
+  ],
+  study:[
+    '미국 유학생 비자 인터뷰 대기 기간 단축',
+    '해외 대학 진학 설명회 잇따라…공대·의학 계열 관심 높아',
+    '영국 유학생 졸업 후 취업비자 기간 조정 논의',
+    '캐나다, 유학생 입국 허가 상한 유지',
+    '일본 대학 한국인 유학생 5년 만에 최대',
+    '호주 유학비 상승…생활비 증빙 기준 높아져',
+    '국내 대학 외국인 유학생 25만 명 돌파',
+    '독일 대학 영어 과정 확대…학비 부담 적어 인기',
+    '어학연수 수요 회복…필리핀·몰타 등 선호',
+    '해외 의대 졸업생 국내 면허 인정 절차 논의'
+  ],
+  work:[
+    '“회의는 30분 안에”…회의 문화 바꾸는 기업 늘어',
+    '주 4.5일제 시범 기업 생산성 오히려 올라',
+    '일 잘하는 사람의 공통점은 ‘기록하는 습관’',
+    '재택·출근 혼합 근무, 협업 도구 사용법이 성과 좌우',
+    '보고서 한 장 요약이 경쟁력…‘원페이지’ 보고 확산',
+    '리더십 교육, 지시보다 코칭 중심으로 변화',
+    '업무 메신저 퇴근 후 알림 끄기 권장 확산',
+    '직장인 멀티태스킹, 생산성 40% 떨어뜨린다',
+    '팀 성과 높이는 1:1 면담 방법',
+    '업무 우선순위 정하는 ‘아이젠하워 매트릭스’ 다시 주목'
+  ],
+  speech:[
+    '발표 잘하는 사람은 첫 30초에 결론부터 말한다',
+    '직장인 스피치 강좌 수강생 증가',
+    '공감 대화법, 갈등 줄이는 데 효과…연구 결과',
+    '의료진 환자 설명 능력 교육 확대…“쉬운 말로 설명해야”',
+    '말실수 줄이는 법, ‘한 박자 쉬고 말하기’',
+    '청중 사로잡는 이야기 구조, 스토리텔링 교육 인기',
+    '온라인 회의에서 말 잘하는 요령',
+    '거절도 기술…관계 지키며 거절하는 화법',
+    '어린이 토론 교육, 사고력·표현력 함께 키워',
+    '목소리 톤과 속도가 신뢰도에 영향'
+  ],
+  growth:[
+    '성인 독서량 소폭 반등…오디오북 이용 늘어',
+    '아침 루틴 만드는 직장인 늘어…운동·독서 선호',
+    '작은 습관이 큰 변화를…‘습관 쌓기’ 방법 주목',
+    '중년 재교육 수요 증가…평생학습 강좌 매진',
+    '디지털 디톡스 실천자 늘어…주말 스마트폰 끄기',
+    '공부법 연구 “짧게 여러 번 복습이 효과적”',
+    '글쓰기 모임 인기…기록하며 생각 정리',
+    '감사 일기, 스트레스 줄이는 효과 확인',
+    '새벽 시간 활용하는 ‘미라클 모닝’ 다시 유행',
+    '목표 달성 확률 높이는 ‘구체적 계획’의 힘'
+  ],
+  future:[
+    '휴머노이드 로봇 가정용 시범 판매 시작',
+    '2035년 일자리 지도…AI 이후 뜨는 직업은',
+    '달 기지 건설 국제 협력 논의 본격화',
+    '초고령사회 대비 돌봄 로봇 실증 확대',
+    '자율주행 택시 도심 운행 지역 넓어져',
+    '미래 도시 실험…스마트시티 시범 지구 확대',
+    '기후 변화 대응 신기술 투자 역대 최대',
+    '뇌-컴퓨터 인터페이스 임상 확대',
+    '양자 인터넷 시험망 구축 착수',
+    '2030 소비 트렌드…‘경험’과 ‘건강’에 지갑 연다'
+  ],
+  health:[
+    '독감 예방접종 시작…어르신·어린이 무료 접종',
+    '하루 7천 보 걷기, 사망 위험 낮춘다는 연구 결과',
+    '성인 4명 중 1명 당뇨 전단계…정기 검진 중요',
+    '수면 부족, 청소년 우울감과 연관…학회 권고안 발표',
+    '가을철 진드기 매개 감염병 주의보',
+    '중년 근력 운동, 치매 위험 낮춘다',
+    '고혈압 환자 절반, 자신의 혈압 수치 몰라',
+    '폐렴구균 백신 접종 대상 확대',
+    '커피 하루 2~3잔, 심혈관 건강과 연관 연구',
+    '대장암 검진 연령 하향 논의 본격화'
+  ]
+};
+const mockFor = id => (MOCK[id] || []).map(title => ({ title, url:'', src:'샘플', time:'' }));
+
+/* ---------- 설정 / 저장소 ---------- */
+const SKEY = 'newsDesk.settings.v1', CACHE = 'newsDesk.cache.v1', QKEY = 'newsDesk.quota.v1', SEEN = 'newsDesk.seenTitles.v1';
+let S = Object.assign({ newsKey:'' }, store.get(SKEY, {}));
+const today = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
+function quota(){ const q = store.get(QKEY, {}); return q.day === today() ? q.used : 0; }
+function useQuota(){ store.set(QKEY, { day:today(), used:quota() + 1 }); }
+
+/* ---------- GNews ---------- */
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+async function gnews(req, max){
+  const base = 'https://gnews.io/api/v4/';
+  const common = `lang=ko&country=kr&max=${max}&apikey=${encodeURIComponent(S.newsKey)}`;
+  let url;
+  if (req.cat) url = `${base}top-headlines?category=${req.cat}&${common}`;
+  else {
+    const from = new Date(Date.now() - (req.days || 1) * 864e5).toISOString().split('.')[0] + 'Z';
+    url = `${base}search?q=${encodeURIComponent(req.q)}&sortby=publishedAt&from=${from}&${common}`;
+  }
+  useQuota();
+  const r = await fetch(url);
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error((j.errors && [].concat(j.errors)[0]) || ('HTTP ' + r.status));
+  return (j.articles || []).map(a => ({ title:a.title, url:a.url, src:(a.source && a.source.name) || '', time:a.publishedAt || '' }));
+}
+
+/* ---------- 화면 ---------- */
+const DAYS = ['일','월','화','수','목','금','토'];
+const hm = d => String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+let results = {};   // id -> { items, mode:'mock'|'live'|'err'|'wait', error }
+let loadedAt = null;
+let seenBefore = new Set(store.get(SEEN, []));
+
+function buildPanels(){
+  const boards = { top:[], big:[], grow:[], mine:[] };
+  SECTIONS.forEach(s => {
+    const html = `<section class="panel raised${s.place === 'top' ? ' strip' : ''}" id="sec-${s.id}" aria-labelledby="h-${s.id}">
+      <div class="panel-head"><h2 id="h-${s.id}">${esc(s.name)} <span class="cnt" id="cnt-${s.id}"></span></h2><span id="tag-${s.id}"></span></div>
+      ${s.sub ? `<p class="sub">${s.mine ? '<span class="mine">맞춤</span>' : ''}${esc(s.sub)}</p>` : ''}
+      <p class="note" id="note-${s.id}" hidden></p>
+      <ol class="news" id="list-${s.id}"></ol></section>`;
+    boards[s.place].push(html);
+  });
+  $('#boardTop').innerHTML = boards.top.join('');
+  $('#boardBig').innerHTML = boards.big.join('');
+  $('#boardGrow').innerHTML = boards.grow.join('');
+  $('#boardMine').innerHTML = boards.mine.join('');
+}
+
+function renderSection(s){
+  const r = results[s.id] || { mode:'wait', items:[] };
+  const tagText = { mock:'샘플', live:'실시간', err:'연결 실패', wait:'불러오는 중' }[r.mode];
+  $('#tag-' + s.id).innerHTML = `<span class="tag inset ${r.mode}">${tagText}</span>`;
+  const note = $('#note-' + s.id);
+  note.hidden = !r.error; note.textContent = r.error || '';
+  $('#cnt-' + s.id).textContent = r.mode === 'wait' ? '' : `${r.items.length}/${s.n}`;
+  const list = $('#list-' + s.id);
+  if (r.mode === 'wait'){
+    list.innerHTML = Array.from({ length:Math.min(s.n, 6) }, (_, i) => `<li><div class="sk inset" style="width:${88 - (i % 3) * 14}%"></div></li>`).join('');
+    return;
+  }
+  list.innerHTML = r.items.length ? r.items.map((n, i) => {
+    const fresh = r.mode === 'live' && seenBefore.size && !seenBefore.has(n.title) ? ' fresh' : '';
+    const tip = [n.src, n.time ? hm(new Date(n.time)) : ''].filter(Boolean).join(' · ');
+    const inner = `<span class="n">${String(i + 1).padStart(2, '0')}</span><span class="h${fresh}">${esc(n.title)}</span>`;
+    return `<li>${n.url
+      ? `<a href="${esc(n.url)}" target="_blank" rel="noopener" title="${esc(tip)}">${inner}</a>`
+      : `<span class="row">${inner}</span>`}</li>`;
+  }).join('') : '<li class="empty">가져온 기사가 없습니다.</li>';
+}
+
+function renderHeader(){
+  const d = new Date();
+  $('#dateLine').textContent = `${d.getFullYear()}. ${d.getMonth() + 1}. ${d.getDate()}  ${DAYS[d.getDay()]}요일`;
+  const h = d.getHours();
+  const g = h < 5 ? '고요한 새벽입니다' : h < 12 ? '좋은 아침입니다' : h < 18 ? '좋은 오후입니다' : '편안한 저녁입니다';
+  $('#greet').innerHTML = esc(g) + '<span class="sun">.</span>';
+
+  const total = SECTIONS.reduce((s, x) => s + ((results[x.id] || {}).items || []).length, 0);
+  const live = SECTIONS.filter(x => (results[x.id] || {}).mode === 'live').length;
+  const parts = [`오늘의 뉴스 <b>${total}건</b>`];
+  if (loadedAt) parts.push(`${live ? '업데이트' : '샘플 기준'} <b>${hm(loadedAt)}</b>`);
+  if (S.newsKey) parts.push(`오늘 API 사용 <b>${quota()}/${DAILY_LIMIT}</b>`);
+  $('#summary').innerHTML = parts.join(' · ');
+
+  $('#modeBtn').classList.toggle('live', live > 0);
+  $('#modeText').textContent = live === 0 ? '샘플 데이터' : live === SECTIONS.length ? '실시간 연결됨' : `실시간 ${live}/${SECTIONS.length}`;
+
+  $('#jump').innerHTML = SECTIONS.map(s => {
+    const n = ((results[s.id] || {}).items || []).length;
+    return `<button class="chip" data-go="${s.id}">${esc(s.name)}<span class="c">${n}</span></button>`;
+  }).join('');
+}
+function renderAll(){ SECTIONS.forEach(renderSection); renderHeader(); }
+
+function tick(){ const d = new Date(); $('#clock').innerHTML = hm(d) + `<small>${String(d.getSeconds()).padStart(2, '0')}</small>`; }
+
+/* ---------- 불러오기 ---------- */
+function loadMock(){
+  SECTIONS.forEach(s => results[s.id] = { mode:'mock', items:mockFor(s.id) });
+  loadedAt = new Date(); renderAll();
+}
+
+let busy = false;
+async function loadLive(force){
+  const cache = store.get(CACHE, null);
+  const fresh = cache && cache.key === S.newsKey.slice(-6) && cache.day === today();
+  if (fresh && !force){
+    results = cache.results; loadedAt = new Date(cache.ts); renderAll(); return;
+  }
+  if (quota() + REQ_PER_LOAD > DAILY_LIMIT){
+    if (cache){ results = cache.results; loadedAt = new Date(cache.ts); renderAll(); }
+    else loadMock();
+    toast(`오늘 무료 요청이 부족합니다(${quota()}/${DAILY_LIMIT}). 저장된 뉴스를 보여줍니다.`);
+    return;
+  }
+  if (busy) return; busy = true; $('#refreshBtn').classList.add('spin'); $('#refreshBtn').disabled = true;
+
+  const prevTitles = cache ? SECTIONS.flatMap(s => ((cache.results[s.id] || {}).items || []).map(i => i.title)) : [];
+  seenBefore = new Set(prevTitles.length ? prevTitles : store.get(SEEN, []));
+  SECTIONS.forEach(s => results[s.id] = { mode:'wait', items:[] });
+  renderAll();
+
+  const used = new Set();
+  let anyLive = false, first = true;
+  for (const s of SECTIONS){
+    const per = Math.min(10, Math.ceil(s.n / s.reqs.length));
+    const items = [], errs = [];
+    for (const req of s.reqs){
+      if (!first) await sleep(1100);   // 무료 플랜 초당 요청 제한 대비
+      first = false;
+      try { items.push(...await gnews(req, per)); }
+      catch (e){ errs.push(e.message || String(e)); if (/api ?key|forbidden|401|403/i.test(errs[0])) break; }
+    }
+    const clean = [];
+    for (const it of items){
+      const k = it.title.replace(/\s+/g, '');
+      if (!it.title || used.has(k)) continue;
+      used.add(k); clean.push(it);
+      if (clean.length >= s.n) break;
+    }
+    if (clean.length){ anyLive = true; results[s.id] = { mode:'live', items:clean, error: errs.length ? '일부 요청 실패: ' + errs[0] : '' }; }
+    else if (errs.length){
+      const old = cache && cache.results[s.id] && cache.results[s.id].mode === 'live' ? cache.results[s.id].items : null;
+      results[s.id] = old ? { mode:'live', items:old, error:'새로 불러오지 못해 이전 뉴스를 보여줍니다: ' + errs[0] }
+                          : { mode:'err', items:mockFor(s.id), error:'실시간 연결 실패(' + errs[0] + '). 샘플을 보여줍니다.' };
+    } else results[s.id] = { mode:'live', items:[], error:'' };
+    renderSection(s); renderHeader();
+    if (errs.length && /api ?key|forbidden|401|403/i.test(errs[0]) && !anyLive){
+      SECTIONS.filter(x => results[x.id].mode === 'wait').forEach(x => { results[x.id] = { mode:'err', items:mockFor(x.id), error:'API 키를 확인하세요. 샘플을 보여줍니다.' }; renderSection(x); });
+      break;
+    }
+  }
+  loadedAt = new Date();
+  if (anyLive){
+    store.set(CACHE, { ts:loadedAt.getTime(), day:today(), key:S.newsKey.slice(-6), results });
+    store.set(SEEN, SECTIONS.flatMap(s => (results[s.id].items || []).map(i => i.title)));
+  }
+  renderHeader();
+  busy = false; $('#refreshBtn').classList.remove('spin'); $('#refreshBtn').disabled = false;
+}
+
+function load(force){ S.newsKey ? loadLive(force) : loadMock(); }
+
+/* ---------- 설정 ---------- */
+function renderPlan(){
+  const rows = SECTIONS.map(s => `<tr><td>${esc(s.name)} ${s.n}건</td><td>${s.reqs.length}회</td></tr>`).join('');
+  $('#planTable').innerHTML = `<tbody>${rows}</tbody><tfoot><tr><td>하루 한 번 불러올 때</td><td>${REQ_PER_LOAD}회</td></tr></tfoot>`;
+  const q = quota();
+  $('#quotaText').textContent = `오늘 사용: ${q} / ${DAILY_LIMIT}회`;
+  $('#quotaBar').style.width = Math.min(100, q / DAILY_LIMIT * 100) + '%';
+}
+function openSettings(){
+  $('#newsKey').value = S.newsKey; renderPlan();
+  $('#scrim').hidden = false; $('#drawer').hidden = false; $('#newsKey').focus();
+}
+function closeSettings(){ $('#scrim').hidden = true; $('#drawer').hidden = true; resetClear(); }
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 3000); }
+
+$('#setForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const prevKey = S.newsKey;
+  S = { newsKey:$('#newsKey').value.trim() };
+  store.set(SKEY, S); closeSettings();
+  if (!S.newsKey){ toast('키가 없어 샘플 뉴스를 보여줍니다.'); loadMock(); return; }
+  toast(prevKey === S.newsKey ? '저장했습니다.' : '저장했습니다. 실시간 뉴스를 불러옵니다.');
+  load(prevKey !== S.newsKey);
+});
+$('#peek').addEventListener('click', () => {
+  const i = $('#newsKey'), show = i.type === 'password';
+  i.type = show ? 'text' : 'password'; $('#peek').textContent = show ? '숨기기' : '보기';
+});
+let armed = false;
+function resetClear(){ armed = false; $('#clearKey').textContent = '키 지우기'; }
+$('#clearKey').addEventListener('click', () => {
+  if (!armed){ armed = true; $('#clearKey').textContent = '한 번 더 누르면 삭제됩니다'; return; }
+  S.newsKey = ''; store.set(SKEY, S); store.set(CACHE, null); $('#newsKey').value = '';
+  resetClear(); closeSettings(); toast('키를 지웠습니다. 샘플 뉴스로 돌아갑니다.'); loadMock();
+});
+
+$('#settingsBtn').addEventListener('click', openSettings);
+$('#modeBtn').addEventListener('click', openSettings);
+$('#closeSet').addEventListener('click', closeSettings);
+$('#scrim').addEventListener('click', closeSettings);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#drawer').hidden) closeSettings(); });
+$('#refreshBtn').addEventListener('click', () => {
+  if (!S.newsKey){ toast('샘플 모드입니다. 설정에서 GNews 키를 넣으면 실제 뉴스를 불러옵니다.'); return; }
+  load(false);
+  toast(loadedAt ? `오늘 뉴스는 ${hm(loadedAt)}에 받았습니다. 내일 처음 열 때 새로 받습니다.` : '오늘 뉴스를 받는 중입니다.');
+});
+$('#jump').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (!b) return;
+  $('#sec-' + b.dataset.go).scrollIntoView({ behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start' });
+});
+
+const TKEY = 'newsDesk.theme';
+function applyTheme(t){ if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme; }
+applyTheme(store.get(TKEY, ''));
+$('#themeBtn').addEventListener('click', () => {
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = cur === 'dark' ? 'light' : 'dark'; applyTheme(next); store.set(TKEY, next);
+});
+
+/* 시작 */
+buildPanels();
+tick(); setInterval(tick, 1000);
+setInterval(() => { renderHeader(); if (S.newsKey) loadLive(false); }, 10 * 60e3);  // 날짜가 바뀌었을 때만 실제로 요청
+load(false);
+})();
+</script>
+</body>
+</html>
