@@ -187,37 +187,34 @@ input[type=text],input[type=password],input[type=number]{border:0;border-radius:
 <div class="scrim" id="scrim" hidden></div>
 <aside class="drawer raised" id="drawer" hidden aria-labelledby="h-set" role="dialog" aria-modal="true">
   <div class="panel-head">
-    <h2 id="h-set">뉴스 연결</h2>
+    <h2 id="h-set">뉴스 자동 업데이트</h2>
     <button class="btn round" id="closeSet" aria-label="설정 닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <p class="intro">키가 없으면 샘플 뉴스를 보여줍니다. GNews 무료 키를 넣고 저장하면 실제 한국 뉴스로 바뀝니다. 키는 이 브라우저에만 저장됩니다.</p>
+  <p class="intro">매일 오전 6시쯤 GitHub이 GNews에서 뉴스를 받아 저장합니다. 이 화면은 저장된 뉴스를 읽기만 하므로 휴대폰이나 다른 컴퓨터에서 키를 넣을 필요가 없습니다.</p>
 
-  <form id="setForm" autocomplete="off" style="display:flex;flex-direction:column;gap:20px">
-    <div class="box">
-      <label for="newsKey">GNews API 키
-        <span class="field"><input type="password" id="newsKey" placeholder="예: 3f9a1c…"><button type="button" class="btn" id="peek">보기</button></span>
-      </label>
-      <p class="help"><a href="https://gnews.io" target="_blank" rel="noopener">gnews.io</a>에서 무료로 가입하면 대시보드에서 키를 바로 받을 수 있습니다. 무료 플랜은 <b>하루 100회 요청, 요청 1회당 최대 10건</b>입니다.</p>
+  <div class="box">
+    <h3>현재 상태</h3>
+    <p class="help" id="statusText"></p>
+    <div class="actions" id="runBox" hidden>
+      <a class="btn primary" id="runLink" href="#" target="_blank" rel="noopener">지금 뉴스 받기</a>
     </div>
+    <p class="help" id="runHelp" hidden>GitHub의 Actions 화면이 열리면 오른쪽의 <b>Run workflow</b> → 초록색 <b>Run workflow</b>를 누르세요. 1~2분 뒤 이 화면을 새로고침하면 반영됩니다. 이렇게 직접 받으면 그날 요청 19회를 한 번 더 씁니다.</p>
+  </div>
 
-    <div class="box">
-      <h3>무료 한도 안에서 쓰는 방식</h3>
-      <table class="plan" id="planTable"></table>
-      <p class="help"><b>하루에 한 번만 업데이트합니다.</b> 그날 처음 열 때 뉴스를 받아 저장해 두고, 같은 날에는 다시 요청하지 않습니다. 하루 사용량은 19회로, 무료 한도 100회 안에 넉넉히 들어갑니다.</p>
-      <div>
-        <p class="help" id="quotaText" style="margin-bottom:8px"></p>
-        <div class="meter inset"><span id="quotaBar" style="width:0"></span></div>
-      </div>
-    </div>
+  <div class="box">
+    <h3>무료 한도 안에서 쓰는 방식</h3>
+    <table class="plan" id="planTable"></table>
+    <p class="help">무료 플랜은 하루 100회, 요청 1회당 최대 10건입니다. 하루 한 번 받을 때 19회를 씁니다. 무료 플랜의 뉴스는 <b>약 12시간 늦게</b> 제공되어, 아침 6시에 받으면 전날 저녁까지의 뉴스가 들어옵니다.</p>
+  </div>
 
-    <div class="actions">
-      <button class="btn primary" type="submit">저장하고 불러오기</button>
-      <button class="btn danger" id="clearKey" type="button">키 지우기</button>
-    </div>
-  </form>
+  <div class="box">
+    <h3>API 키</h3>
+    <p class="help">GNews 키는 이 화면이 아니라 GitHub 저장소의 비밀 저장소(Secrets, 이름 <b>GNEWS_KEY</b>)에 들어 있어 다른 사람에게 보이지 않습니다.<span id="secretHelp" hidden> 키를 바꾸려면 <a id="secretLink" href="#" target="_blank" rel="noopener">저장소 Secrets 화면</a>에서 GNEWS_KEY를 수정하세요.</span></p>
+  </div>
 </aside>
 <div class="toast raised" id="toast" hidden role="status"></div>
 
+<script src="sections.js"></script>
 <script>
 (() => {
 'use strict';
@@ -228,25 +225,8 @@ const store = {
   set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 };
 
-/* ---------- 분야 구성 (요청 1회 = 최대 10건) ----------
-   cat: GNews top-headlines 분류, q: 검색어(최근 24시간) */
-const SECTIONS = [
-  { id:'politics', name:'정치',         n:3,  place:'top', reqs:[{ q:'정치 OR 국회 OR 대통령실' }] },
-  { id:'economy',  name:'경제',         n:20, place:'big', reqs:[{ cat:'business' }, { q:'경제 OR 금리 OR 증시 OR 부동산' }] },
-  { id:'society',  name:'사회',         n:20, place:'big', reqs:[{ cat:'nation' }, { q:'사회 OR 사건 OR 복지 OR 노동' }] },
-  { id:'world',    name:'세계',         n:20, place:'big', reqs:[{ cat:'world' }, { q:'국제 OR 외신 OR 미국 OR 중국 OR 일본' }] },
-  { id:'tech',     name:'IT·과학·미래', n:20, place:'big', reqs:[{ cat:'technology' }, { cat:'science' }] },
-  { id:'edu',      name:'교육',         n:10, place:'grow', sub:'입시·학교·대학, 최근 2일', reqs:[{ q:'교육 OR 입시 OR 학교 OR 대학', days:2 }] },
-  { id:'study',    name:'유학',         n:10, place:'grow', mine:true, sub:'해외 대학·유학생·비자, 최근 7일', reqs:[{ q:'유학 OR 유학생 OR "해외 대학" OR 어학연수 OR "학생 비자"', days:7 }] },
-  { id:'work',     name:'Work', n:10, place:'grow', mine:true, sub:'업무 효율·협업·리더십, 최근 7일', reqs:[{ q:'"업무 효율" OR 일잘러 OR 협업 OR 리더십 OR "회의 문화" OR 생산성', days:7 }] },
-  { id:'speech',   name:'Speech', n:10, place:'grow', mine:true, sub:'대화법·발표·스피치, 최근 7일', reqs:[{ q:'대화법 OR 화법 OR 스피치 OR 발표 OR 말하기 OR 소통법', days:7 }] },
-  { id:'growth',   name:'자기계발',     n:10, place:'grow', mine:true, sub:'습관·독서·공부법, 최근 7일', reqs:[{ q:'자기계발 OR 습관 OR 독서 OR 공부법 OR 루틴 OR 동기부여', days:7 }] },
-  { id:'eye',      name:'안과·눈 건강', n:10, place:'mine', mine:true, sub:'망막·백내장·녹내장, 최근 7일', reqs:[{ q:'안과 OR 망막 OR 황반변성 OR 녹내장 OR 백내장 OR 시력', days:7 }] },
-  { id:'medical',  name:'의료·병원',    n:10, place:'mine', mine:true, sub:'의료 정책·병원·전공의, 최근 2일', reqs:[{ q:'의료 OR 병원 OR 의대 OR 전공의 OR 건강보험', days:2 }] },
-  { id:'health',   name:'건강',         n:10, place:'mine', mine:true, sub:'건강 분야 주요 뉴스', reqs:[{ cat:'health' }] },
-  { id:'ai',       name:'AI',           n:10, place:'mine', mine:true, sub:'생성형 AI·AI 에이전트·활용, 최근 2일', reqs:[{ q:'"생성형 AI" OR "AI 에이전트" OR 챗GPT OR 클로드 OR 제미나이 OR "AI 활용"', days:2 }] },
-  { id:'future',   name:'미래',         n:10, place:'mine', mine:true, sub:'미래 사회·트렌드·로봇·우주, 최근 3일', reqs:[{ q:'"미래 사회" OR "미래 기술" OR 트렌드 OR 로봇 OR 우주 OR 휴머노이드', days:3 }] }
-];
+/* ---------- 분야 구성: sections.js에서 읽음 ---------- */
+const SECTIONS = globalThis.NEWS_SECTIONS || [];
 const REQ_PER_LOAD = SECTIONS.reduce((s, x) => s + x.reqs.length, 0);
 const DAILY_LIMIT = 100;
 
@@ -468,40 +448,29 @@ const MOCK = {
 };
 const mockFor = id => (MOCK[id] || []).map(title => ({ title, url:'', src:'샘플', time:'' }));
 
-/* ---------- 설정 / 저장소 ---------- */
-const SKEY = 'newsDesk.settings.v1', CACHE = 'newsDesk.cache.v1', QKEY = 'newsDesk.quota.v2', SEEN = 'newsDesk.seenTitles.v1';
-let S = Object.assign({ newsKey:'' }, store.get(SKEY, {}));
-const today = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
-function quota(){ const q = store.get(QKEY, {}); return q.day === today() ? q.used : 0; }
-function useQuota(){ store.set(QKEY, { day:today(), used:quota() + 1 }); }
-
-/* ---------- GNews ---------- */
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-async function gnews(req, max){
-  const base = 'https://gnews.io/api/v4/';
-  const common = `lang=ko&country=kr&max=${max}&apikey=${encodeURIComponent(S.newsKey)}`;
-  let url;
-  if (req.cat) url = `${base}top-headlines?category=${req.cat}&${common}`;
-  else {
-    const from = new Date(Date.now() - (req.days || 1) * 864e5).toISOString().split('.')[0] + 'Z';
-    url = `${base}search?q=${encodeURIComponent(req.q)}&sortby=publishedAt&from=${from}&${common}`;
-  }
-  const r = await fetch(url);
-  useQuota();   // 서버까지 닿은 요청만 셈
-  const j = await r.json().catch(() => ({}));
-  if (!r.ok){
-    const err = new Error((j.errors && [].concat(j.errors)[0]) || ('HTTP ' + r.status));
-    err.status = r.status; throw err;
-  }
-  return (j.articles || []).map(a => ({ title:a.title, url:a.url, src:(a.source && a.source.name) || '', time:a.publishedAt || '' }));
+/* ---------- 저장된 뉴스(news.json) 위치 ---------- */
+const SEEN_CUR = 'newsDesk.seenCur.v2', SEEN_PREV = 'newsDesk.seenPrev.v2';
+const REPO = (() => {
+  const h = location.hostname;
+  if (!h.endsWith('.github.io')) return null;
+  const repo = location.pathname.split('/').filter(Boolean)[0];
+  return repo ? { owner:h.split('.')[0], repo } : null;
+})();
+function dataUrls(){
+  const urls = [];
+  // raw 주소가 GitHub Pages보다 먼저 갱신되므로 먼저 시도
+  if (REPO) urls.push(`https://raw.githubusercontent.com/${REPO.owner}/${REPO.repo}/main/news.json`);
+  urls.push('news.json');
+  return urls;
 }
+let info = null;   // 불러온 news.json의 요약(시각, 요청 수)
 
 /* ---------- 화면 ---------- */
 const DAYS = ['일','월','화','수','목','금','토'];
 const hm = d => String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
 let results = {};   // id -> { items, mode:'mock'|'live'|'err'|'wait', error }
 let loadedAt = null;
-let seenBefore = new Set(store.get(SEEN, []));
+let seenBefore = new Set();
 
 function buildPanels(){
   const boards = { top:[], big:[], grow:[], mine:[] };
@@ -521,7 +490,7 @@ function buildPanels(){
 
 function renderSection(s){
   const r = results[s.id] || { mode:'wait', items:[] };
-  const tagText = { mock:'샘플', live:'실시간', err:'연결 실패', wait:'불러오는 중' }[r.mode];
+  const tagText = { mock:'샘플', live:'자동 업데이트', err:'연결 실패', wait:'불러오는 중' }[r.mode];
   $('#tag-' + s.id).innerHTML = `<span class="tag inset ${r.mode}">${tagText}</span>`;
   const note = $('#note-' + s.id);
   note.hidden = !r.error; note.textContent = r.error || '';
@@ -551,12 +520,14 @@ function renderHeader(){
   const total = SECTIONS.reduce((s, x) => s + ((results[x.id] || {}).items || []).length, 0);
   const live = SECTIONS.filter(x => (results[x.id] || {}).mode === 'live').length;
   const parts = [`오늘의 뉴스 <b>${total}건</b>`];
-  if (loadedAt) parts.push(`${live ? '업데이트' : '샘플 기준'} <b>${hm(loadedAt)}</b>`);
-  if (S.newsKey) parts.push(`오늘 API 사용 <b>${quota()}/${DAILY_LIMIT}</b>`);
+  if (info && loadedAt){
+    parts.push(`받은 시각 <b>${md(loadedAt)}</b>`);
+    parts.push(`GNews 사용 <b>${info.requests || REQ_PER_LOAD}/${DAILY_LIMIT}</b>`);
+  } else parts.push('샘플 뉴스');
   $('#summary').innerHTML = parts.join(' · ');
 
   $('#modeBtn').classList.toggle('live', live > 0);
-  $('#modeText').textContent = live === 0 ? '샘플 데이터' : live === SECTIONS.length ? '실시간 연결됨' : `실시간 ${live}/${SECTIONS.length}`;
+  $('#modeText').textContent = live ? '매일 자동 업데이트' : '샘플 데이터';
 
   $('#jump').innerHTML = SECTIONS.map(s => {
     const n = ((results[s.id] || {}).items || []).length;
@@ -569,143 +540,75 @@ function tick(){ const d = new Date(); $('#clock').innerHTML = hm(d) + `<small>$
 
 /* ---------- 불러오기 ---------- */
 function loadMock(){
+  info = null;
   SECTIONS.forEach(s => results[s.id] = { mode:'mock', items:mockFor(s.id) });
-  loadedAt = new Date(); renderAll();
+  loadedAt = null; renderAll();
 }
 
+const md = d => `${d.getMonth() + 1}월 ${d.getDate()}일 ${hm(d)}`;
+function showAlert(msg){ const a = $('#alert'); a.hidden = !msg; a.textContent = msg || ''; }
+
 let busy = false;
-async function loadLive(force){
-  const cache = store.get(CACHE, null);
-  const fresh = cache && cache.key === S.newsKey.slice(-6) && cache.day === today();
-  if (fresh && !force){
-    results = cache.results; loadedAt = new Date(cache.ts); renderAll(); return;
+async function load(){
+  if (busy) return; busy = true;
+  $('#refreshBtn').classList.add('spin'); $('#refreshBtn').disabled = true;
+  let data = null;
+  for (const u of dataUrls()){
+    try {
+      const r = await fetch(u + '?t=' + Date.now(), { cache:'no-store' });
+      if (r.ok){ data = await r.json(); break; }
+    } catch (e) { /* 다음 주소로 */ }
   }
-  if (quota() + REQ_PER_LOAD > DAILY_LIMIT){
-    if (cache){ results = cache.results; loadedAt = new Date(cache.ts); renderAll(); }
-    else loadMock();
-    toast(`오늘 무료 요청이 부족합니다(${quota()}/${DAILY_LIMIT}). 저장된 뉴스를 보여줍니다.`);
-    return;
-  }
-  if (busy) return; busy = true; $('#refreshBtn').classList.add('spin'); $('#refreshBtn').disabled = true;
-
-  const prevTitles = cache ? SECTIONS.flatMap(s => ((cache.results[s.id] || {}).items || []).map(i => i.title)) : [];
-  seenBefore = new Set(prevTitles.length ? prevTitles : store.get(SEEN, []));
-  SECTIONS.forEach(s => results[s.id] = { mode:'wait', items:[] });
-  renderAll();
-
-  showAlert('');
-  const used = new Set();
-  let anyLive = false, first = true, fatal = null;
-  for (const s of SECTIONS){
-    const per = Math.min(10, Math.ceil(s.n / s.reqs.length));
-    const items = [], errs = [];
-    for (const req of s.reqs){
-      if (!first) await sleep(1100);   // 무료 플랜 초당 요청 제한 대비
-      first = false;
-      try { items.push(...await gnews(req, per)); }
-      catch (e){
-        errs.push(friendly(e));
-        // 계정·키·한도 문제나 연결 자체가 안 될 때는 더 요청해도 소용없으므로 바로 멈춤
-        if (e.status === 401 || e.status === 403 || e.status === 429 || !e.status){ fatal = friendly(e); break; }
-      }
+  if (data && data.sections){
+    info = data;
+    loadedAt = new Date(data.updatedAt);
+    SECTIONS.forEach(s => results[s.id] = { mode:'live', items:data.sections[s.id] || [], error:'' });
+    // 새로 들어온 기사 표시: 이전에 받은 뉴스와 비교
+    const titles = SECTIONS.flatMap(s => results[s.id].items.map(i => i.title));
+    const cur = store.get(SEEN_CUR, null);
+    if (!cur || cur.ts !== data.updatedAt){
+      if (cur) store.set(SEEN_PREV, cur.titles);
+      store.set(SEEN_CUR, { ts:data.updatedAt, titles });
     }
-    if (fatal) break;
-    const clean = [];
-    for (const it of items){
-      const k = it.title.replace(/\s+/g, '');
-      if (!it.title || used.has(k)) continue;
-      used.add(k); clean.push(it);
-      if (clean.length >= s.n) break;
-    }
-    if (clean.length){ anyLive = true; results[s.id] = { mode:'live', items:clean, error: errs.length ? '일부 요청 실패: ' + errs[0] : '' }; }
-    else if (errs.length){
-      const old = cache && cache.results[s.id] && cache.results[s.id].mode === 'live' ? cache.results[s.id].items : null;
-      results[s.id] = old ? { mode:'live', items:old, error:'새로 불러오지 못해 이전 뉴스를 보여줍니다: ' + errs[0] }
-                          : { mode:'err', items:mockFor(s.id), error:'실시간 연결 실패(' + errs[0] + '). 샘플을 보여줍니다.' };
-    } else results[s.id] = { mode:'live', items:[], error:'' };
-    renderSection(s); renderHeader();
-  }
-  if (fatal){
-    authBlocked = true;
-    SECTIONS.filter(x => results[x.id].mode !== 'live').forEach(x => {
-      const old = cache && cache.results[x.id] && cache.results[x.id].mode === 'live' ? cache.results[x.id].items : null;
-      results[x.id] = old ? { mode:'live', items:old, error:'' } : { mode:'mock', items:mockFor(x.id), error:'' };
-    });
-    showAlert(fatal + ' 그동안은 샘플 뉴스를 보여줍니다.');
+    seenBefore = new Set(store.get(SEEN_PREV, []));
+    const ageH = (Date.now() - loadedAt.getTime()) / 36e5;
+    showAlert(ageH > 30 ? `뉴스가 ${Math.floor(ageH / 24)}일째 새로 받아지지 않았습니다. ⚙ 설정에서 자동 업데이트 상태를 확인하세요.` : '');
     renderAll();
-  } else authBlocked = false;
-  loadedAt = new Date();
-  if (anyLive){
-    store.set(CACHE, { ts:loadedAt.getTime(), day:today(), key:S.newsKey.slice(-6), results });
-    store.set(SEEN, SECTIONS.flatMap(s => (results[s.id].items || []).map(i => i.title)));
+  } else {
+    loadMock();
+    showAlert('');
   }
-  renderHeader();
   busy = false; $('#refreshBtn').classList.remove('spin'); $('#refreshBtn').disabled = false;
 }
 
-let authBlocked = false;
-function friendly(e){
-  const m = e.message || String(e);
-  if (/activate your account|verify your email/i.test(m)) return 'GNews 계정의 이메일 인증이 아직 안 됐습니다. 가입한 메일함(스팸함 포함)에서 GNews 인증 메일의 링크를 누른 뒤 새로고침 버튼을 누르세요.';
-  if (e.status === 401 || /api ?key/i.test(m)) return 'GNews API 키가 맞지 않습니다. gnews.io 대시보드에서 키를 다시 복사해 설정에 넣으세요.';
-  if (e.status === 403 && /limit|quota|exceed/i.test(m)) return '오늘 GNews 무료 요청 한도를 다 썼습니다. 내일 다시 받아옵니다.';
-  if (e.status === 429) return '요청이 너무 빨라 GNews가 잠시 막았습니다. 1분 뒤 새로고침하세요.';
-  if (e.status === 403) return 'GNews가 요청을 거절했습니다: ' + m;
-  if (!e.status) return 'GNews 서버에 연결하지 못했습니다. 광고 차단·보안 확장 프로그램이 gnews.io를 막고 있는지 확인하세요(시크릿 창에서 열어 보면 알 수 있습니다).';
-  return m;
-}
-function showAlert(msg){ const a = $('#alert'); a.hidden = !msg; a.textContent = msg || ''; }
-
-function load(force){ S.newsKey ? loadLive(force) : (showAlert(''), loadMock()); }
-
 /* ---------- 설정 ---------- */
-function renderPlan(){
+function renderSettings(){
   const rows = SECTIONS.map(s => `<tr><td>${esc(s.name)} ${s.n}건</td><td>${s.reqs.length}회</td></tr>`).join('');
-  $('#planTable').innerHTML = `<tbody>${rows}</tbody><tfoot><tr><td>하루 한 번 불러올 때</td><td>${REQ_PER_LOAD}회</td></tr></tfoot>`;
-  const q = quota();
-  $('#quotaText').textContent = `오늘 사용: ${q} / ${DAILY_LIMIT}회`;
-  $('#quotaBar').style.width = Math.min(100, q / DAILY_LIMIT * 100) + '%';
+  $('#planTable').innerHTML = `<tbody>${rows}</tbody><tfoot><tr><td>하루 한 번 받을 때</td><td>${REQ_PER_LOAD}회</td></tr></tfoot>`;
+  $('#statusText').innerHTML = info
+    ? `마지막으로 받은 시각: <b>${md(new Date(info.updatedAt))}</b><br>기사 ${info.total || 0}건 · GNews 요청 ${info.requests || REQ_PER_LOAD}회`
+    : '아직 받은 뉴스가 없어 <b>샘플 뉴스</b>를 보여주고 있습니다. 저장소에 GNEWS_KEY를 등록한 뒤 아래 버튼으로 한 번 받아 보세요.';
+  if (REPO){
+    const base = `https://github.com/${REPO.owner}/${REPO.repo}`;
+    $('#runLink').href = base + '/actions/workflows/news.yml';
+    $('#secretLink').href = base + '/settings/secrets/actions';
+    $('#runBox').hidden = false; $('#runHelp').hidden = false; $('#secretHelp').hidden = false;
+  }
 }
-function openSettings(){
-  $('#newsKey').value = S.newsKey; renderPlan();
-  $('#scrim').hidden = false; $('#drawer').hidden = false; $('#newsKey').focus();
-}
-function closeSettings(){ $('#scrim').hidden = true; $('#drawer').hidden = true; resetClear(); }
+function openSettings(){ renderSettings(); $('#scrim').hidden = false; $('#drawer').hidden = false; $('#closeSet').focus(); }
+function closeSettings(){ $('#scrim').hidden = true; $('#drawer').hidden = true; }
 function toast(msg){ const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 3000); }
-
-$('#setForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const prevKey = S.newsKey;
-  S = { newsKey:$('#newsKey').value.trim() };
-  store.set(SKEY, S); closeSettings();
-  if (!S.newsKey){ toast('키가 없어 샘플 뉴스를 보여줍니다.'); loadMock(); return; }
-  toast(prevKey === S.newsKey ? '저장했습니다.' : '저장했습니다. 실시간 뉴스를 불러옵니다.');
-  load(prevKey !== S.newsKey);
-});
-$('#peek').addEventListener('click', () => {
-  const i = $('#newsKey'), show = i.type === 'password';
-  i.type = show ? 'text' : 'password'; $('#peek').textContent = show ? '숨기기' : '보기';
-});
-let armed = false;
-function resetClear(){ armed = false; $('#clearKey').textContent = '키 지우기'; }
-$('#clearKey').addEventListener('click', () => {
-  if (!armed){ armed = true; $('#clearKey').textContent = '한 번 더 누르면 삭제됩니다'; return; }
-  S.newsKey = ''; store.set(SKEY, S); store.set(CACHE, null); $('#newsKey').value = '';
-  resetClear(); closeSettings(); toast('키를 지웠습니다. 샘플 뉴스로 돌아갑니다.'); loadMock();
-});
 
 $('#settingsBtn').addEventListener('click', openSettings);
 $('#modeBtn').addEventListener('click', openSettings);
 $('#closeSet').addEventListener('click', closeSettings);
 $('#scrim').addEventListener('click', closeSettings);
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#drawer').hidden) closeSettings(); });
-$('#refreshBtn').addEventListener('click', () => {
-  if (!S.newsKey){ toast('샘플 모드입니다. 설정에서 GNews 키를 넣으면 실제 뉴스를 불러옵니다.'); return; }
-  const c = store.get(CACHE, null);
-  if (c && c.day === today() && c.key === S.newsKey.slice(-6) && !authBlocked){
-    load(false);
-    toast(`오늘 뉴스는 ${hm(new Date(c.ts))}에 받았습니다. 내일 처음 열 때 새로 받습니다.`);
-  } else load(true);
+$('#refreshBtn').addEventListener('click', async () => {
+  const before = info && info.updatedAt;
+  await load();
+  if (!info) toast('아직 받은 뉴스가 없어 샘플을 보여줍니다.');
+  else toast(info.updatedAt !== before ? '새 뉴스를 불러왔습니다.' : `최신 뉴스입니다. ${md(new Date(info.updatedAt))}에 받았습니다.`);
 });
 $('#jump').addEventListener('click', e => {
   const b = e.target.closest('[data-go]'); if (!b) return;
@@ -723,8 +626,8 @@ $('#themeBtn').addEventListener('click', () => {
 /* 시작 */
 buildPanels();
 tick(); setInterval(tick, 1000);
-setInterval(() => { renderHeader(); if (S.newsKey && !authBlocked) loadLive(false); }, 10 * 60e3);  // 날짜가 바뀌었을 때만 실제로 요청
-load(false);
+setInterval(() => { renderHeader(); load(); }, 30 * 60e3);  // 저장된 뉴스만 다시 읽음(GNews 요청 없음)
+load();
 })();
 </script>
 </body>
