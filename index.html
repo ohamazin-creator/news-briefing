@@ -469,7 +469,7 @@ const MOCK = {
 const mockFor = id => (MOCK[id] || []).map(title => ({ title, url:'', src:'샘플', time:'' }));
 
 /* ---------- 설정 / 저장소 ---------- */
-const SKEY = 'newsDesk.settings.v1', CACHE = 'newsDesk.cache.v1', QKEY = 'newsDesk.quota.v1', SEEN = 'newsDesk.seenTitles.v1';
+const SKEY = 'newsDesk.settings.v1', CACHE = 'newsDesk.cache.v1', QKEY = 'newsDesk.quota.v2', SEEN = 'newsDesk.seenTitles.v1';
 let S = Object.assign({ newsKey:'' }, store.get(SKEY, {}));
 const today = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
 function quota(){ const q = store.get(QKEY, {}); return q.day === today() ? q.used : 0; }
@@ -486,8 +486,8 @@ async function gnews(req, max){
     const from = new Date(Date.now() - (req.days || 1) * 864e5).toISOString().split('.')[0] + 'Z';
     url = `${base}search?q=${encodeURIComponent(req.q)}&sortby=publishedAt&from=${from}&${common}`;
   }
-  useQuota();
   const r = await fetch(url);
+  useQuota();   // 서버까지 닿은 요청만 셈
   const j = await r.json().catch(() => ({}));
   if (!r.ok){
     const err = new Error((j.errors && [].concat(j.errors)[0]) || ('HTTP ' + r.status));
@@ -605,7 +605,8 @@ async function loadLive(force){
       try { items.push(...await gnews(req, per)); }
       catch (e){
         errs.push(friendly(e));
-        if (e.status === 401 || e.status === 403){ fatal = friendly(e); break; }   // 계정·키·한도 문제는 더 요청해도 소용없음
+        // 계정·키·한도 문제나 연결 자체가 안 될 때는 더 요청해도 소용없으므로 바로 멈춤
+        if (e.status === 401 || e.status === 403 || e.status === 429 || !e.status){ fatal = friendly(e); break; }
       }
     }
     if (fatal) break;
@@ -650,6 +651,7 @@ function friendly(e){
   if (e.status === 403 && /limit|quota|exceed/i.test(m)) return '오늘 GNews 무료 요청 한도를 다 썼습니다. 내일 다시 받아옵니다.';
   if (e.status === 429) return '요청이 너무 빨라 GNews가 잠시 막았습니다. 1분 뒤 새로고침하세요.';
   if (e.status === 403) return 'GNews가 요청을 거절했습니다: ' + m;
+  if (!e.status) return 'GNews 서버에 연결하지 못했습니다. 광고 차단·보안 확장 프로그램이 gnews.io를 막고 있는지 확인하세요(시크릿 창에서 열어 보면 알 수 있습니다).';
   return m;
 }
 function showAlert(msg){ const a = $('#alert'); a.hidden = !msg; a.textContent = msg || ''; }
