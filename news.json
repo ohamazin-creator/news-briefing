@@ -1,231 +1,261 @@
 {
- "updatedAt": "2026-09-26T16:49:38.745Z",
+ "updatedAt": "2026-09-26T21:13:23.171Z",
  "requests": 19,
- "total": 51,
+ "total": 50,
  "sections": {
   "politics": [],
   "economy": [
    {
-    "title": "호르무즈 재개방 기대감에 뉴욕 증시↑...미 국채 금리는 5% 연일 돌파",
-    "url": "https://www.sedaily.com/article/20095045",
-    "src": "서울경제",
-    "time": "2026-09-26T04:33:10Z"
-   },
-   {
-    "title": "'203조 몸값' 솔리다임 美상장?...하이닉스 주가엔 '악재 vs 호재'",
-    "url": "https://www.mt.co.kr/world/2026/09/26/2026092613073039770",
-    "src": "머니투데이",
-    "time": "2026-09-26T04:30:25Z"
-   },
-   {
-    "title": "전국 주유소 기름값 19주 연속 하락…휘발유 L당 1858원",
-    "url": "https://www.m-i.kr/news/articleView.html?idxno=1418081",
-    "src": "매일일보",
-    "time": "2026-09-26T04:22:23Z"
-   },
-   {
-    "title": "\"SK하이닉스 솔리다임, 이르면 내년 美 상장 검토\"",
-    "url": "https://v.daum.net/v/20260926131601485",
+    "title": "'204조 몸값' 솔리다임 美 IPO 추진…SK하이닉스, AI 반도체 독주 체제 굳힌다",
+    "url": "https://v.daum.net/v/20260926180121905",
     "src": "v.daum.net",
-    "time": "2026-09-26T04:16:00Z"
+    "time": "2026-09-26T09:01:21Z"
    },
    {
-    "title": "美는 ‘AI 비서’ 별천지, ‘뮤즈’가 대역전 노린다",
-    "url": "https://www.sedaily.com/article/20095040",
-    "src": "sedaily.com",
-    "time": "2026-09-26T03:05:00Z"
+    "title": "“시골 부모님이 지금 삼전 들어가신답니다”…명절 후 주가 실제 향방보니",
+    "url": "https://www.mk.co.kr/news/stock/12161670",
+    "src": "매일경제",
+    "time": "2026-09-26T08:44:21Z"
    },
    {
-    "title": "\"추석 끝나면 '30만전자' 진짜 오나\"... 외국인들이 삼성전자 풀매수 한 이유 [머니 시그널]",
-    "url": "https://v.daum.net/v/20260926120209694",
-    "src": "v.daum.net",
-    "time": "2026-09-26T03:02:09Z"
+    "title": "돈잔치 할 때 아냐…삼전닉스 호황에 소환된 이건희 승부수",
+    "url": "https://www.hankyung.com/article/2026092180476",
+    "src": "한국경제",
+    "time": "2026-09-26T08:29:08Z"
    },
    {
-    "title": "\"추석 용돈으로 주식 사볼까\"⋯기업 실적·성장성 고려해야",
-    "url": "https://v.daum.net/v/20260926120207691",
-    "src": "v.daum.net",
-    "time": "2026-09-26T03:02:07Z"
+    "title": "세계 선체보험료 105억달러로 늘었지만…IUMI “시장 약세·위험은 확대”",
+    "url": "http://www.haesanews.com/news/articleView.html?idxno=151404",
+    "src": "해사신문",
+    "time": "2026-09-26T08:10:00Z"
    },
    {
-    "title": "SK '부지'·삼성 '속도'…호남 반도체 산단 구축 '탄력'",
-    "url": "https://v.daum.net/v/20260926120110655",
-    "src": "v.daum.net",
-    "time": "2026-09-26T03:01:10Z"
+    "title": "일본 가면 기절한다는데… 한국인들 억울한 진짜 이유는",
+    "url": "https://www.hankyung.com/article/2026092202626",
+    "src": "한국경제",
+    "time": "2026-09-26T07:56:40Z"
    },
    {
-    "title": "코스피 7000선에도…상한가·52주 신고가 종목은 줄었다",
-    "url": "https://v.daum.net/v/pJ0aivPKlU",
-    "src": "v.daum.net",
-    "time": "2026-09-26T03:01:05Z"
+    "title": "\"최상위 AI 인재들, 미국보다 중국 많이 선택…한국 4위 부상\"",
+    "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008770829",
+    "src": "news.sbs.co.kr",
+    "time": "2026-09-26T07:51:32Z"
    },
    {
-    "title": "추석 휴게소서 1인당 1만8000원 썼다…귀경 심야 매출 4배 급증",
-    "url": "https://www.g-enews.com/article/General-News/2026/09/202609260101067089e30fcb1ba8_1",
-    "src": "글로벌이코노믹",
-    "time": "2026-09-26T03:00:00Z"
+    "title": "10년 전 1억원, 엔비디아에 넣었다면 138억원…비트코인도 제쳤다",
+    "url": "https://www.kyeonggi.com/article/20260926580087",
+    "src": "경기일보",
+    "time": "2026-09-26T07:48:19Z"
+   },
+   {
+    "title": "KBS 뉴스",
+    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8671873",
+    "src": "KBS 뉴스",
+    "time": "2026-09-26T07:48:00Z"
+   },
+   {
+    "title": "\"최상위 AI 인재들, 美보다 中 많이 선택…韓 4위 부상\"",
+    "url": "https://www.yna.co.kr/view/AKR20260926036500083",
+    "src": "연합뉴스",
+    "time": "2026-09-26T07:31:58Z"
    }
   ],
   "society": [
    {
-    "title": "KBS 뉴스",
-    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8671859",
-    "src": "KBS 뉴스",
-    "time": "2026-09-26T04:40:00Z"
+    "title": "'멕시코 K-박람회' 찾은 이 대통령…K-팝 팬들 만나고 기업 애로 경청",
+    "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148972621&call_from=naver_news",
+    "src": "정책브리핑",
+    "time": "2026-09-26T08:48:45Z"
    },
    {
-    "title": "'귀경길 정체' 시작…오후 4~5시 절정, 27일 새벽에 해소",
-    "url": "https://www.newspim.com/news/view/20260926000082",
-    "src": "뉴스핌",
-    "time": "2026-09-26T04:29:00Z"
+    "title": "조희대 ‘재제청 거부’ 파장…민주 “사법부 망가뜨려” 국힘 “겁박 중단”",
+    "url": "https://www.hani.co.kr/arti/politics/politics_general/1279522.html",
+    "src": "한겨레",
+    "time": "2026-09-26T08:43:00Z"
    },
    {
-    "title": "으악! 내가 뭘 먹은 거야…김치·돼지고기 이렇게 팔았어?",
-    "url": "https://www.hankyung.com/article/2026092665327",
-    "src": "한국경제",
-    "time": "2026-09-26T03:29:48Z"
-   },
-   {
-    "title": "\"부캉이 보니 힐링 되네요\" 비 와도 인파 몰린 부산 북항",
-    "url": "https://www.yna.co.kr/view/AKR20260926027900051",
-    "src": "연합뉴스",
-    "time": "2026-09-26T03:22:38Z"
-   },
-   {
-    "title": "\"등기 안내문이잖아\" 믿고 전화했는데 '날벼락'…먼저 전화하게 만드는 피싱",
-    "url": "https://v.daum.net/v/G1Mw0dHlNn",
+    "title": "10명 숨지고 92명 다쳤다…불안한 '휴게소 안전'",
+    "url": "https://v.daum.net/v/Ff28B2OcUA",
     "src": "v.daum.net",
-    "time": "2026-09-26T03:16:51Z"
+    "time": "2026-09-26T08:36:06Z"
    },
    {
-    "title": "이재명 대통령 부부, K-엑스포 및 비즈니스 포럼 참석 관련 성기홍 홍보소통수석 브리핑",
-    "url": "https://www.president.go.kr/briefings/zXudA2D7",
-    "src": "대한민국 청와대",
-    "time": "2026-09-26T03:01:31Z"
-   },
-   {
-    "title": "[설왕설래] ICJ 재판관, 일본 4 대 한국 0",
-    "url": "https://www.segye.com/newsView/20260926504272",
-    "src": "세계일보",
-    "time": "2026-09-26T02:31:49Z"
-   },
-   {
-    "title": "\"'北포로 비공개' 韓과 합의 없었다\" \"있었다\"‥우크라 정부 내 설전",
-    "url": "https://imnews.imbc.com/news/2026/world/article/6854200_36925.html",
+    "title": "한동훈 \"이 대통령, '포로송환' 국제망신\"‥이기헌 \"정치하려면 염치 알아야\"",
+    "url": "https://imnews.imbc.com/news/2026/politics/article/6854232_36911.html",
     "src": "MBC 뉴스",
-    "time": "2026-09-26T02:16:27Z"
+    "time": "2026-09-26T08:31:57Z"
    },
    {
-    "title": "캠핑장 가족모임서 아내 친오빠 살해한 40대…징역 16년 확정",
-    "url": "https://www.khan.co.kr/article/202609261104001",
+    "title": "이 대통령, 스트레이키즈 콘서트서 멕시코 청년들 만나‥\"K팝 사랑에 감사\"",
+    "url": "https://imnews.imbc.com/news/2026/politics/article/6854229_36911.html",
+    "src": "MBC 뉴스",
+    "time": "2026-09-26T08:25:54Z"
+   },
+   {
+    "title": "이 대통령, '작은 서울'로 불리는 소나 로사 방문…한인동포 등과 소통",
+    "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148972622",
+    "src": "정책브리핑",
+    "time": "2026-09-26T08:15:00Z"
+   },
+   {
+    "title": "조희대 놓고 여야 충돌…與 \"정치질\" 野 \"사법부 길들이기\"",
+    "url": "https://www.hankyung.com/article/2026092666627",
+    "src": "hankyung.com",
+    "time": "2026-09-26T08:04:14Z"
+   },
+   {
+    "title": "오랜만에 술 좀 마시니, 심장이 ‘쿵쾅쿵쾅’… 휴일심장증후군 주의",
+    "url": "https://health.chosun.com/site/data/html_dir/2026/09/23/2026092303461.html",
+    "src": "헬스조선",
+    "time": "2026-09-26T08:00:00Z"
+   },
+   {
+    "title": "[단독]“성폭력, ‘저항했나’ 아닌 ‘동의했나’를 봐야”…유럽인권재판관의 제언",
+    "url": "https://www.khan.co.kr/article/202609261658001",
     "src": "경향신문",
-    "time": "2026-09-26T02:04:00Z"
+    "time": "2026-09-26T07:58:00Z"
    }
   ],
   "world": [
    {
-    "title": "미스 유니버스 무대서 추락해 뇌손상…자메이카 대표 조직위에 소송",
-    "url": "https://www.asiae.co.kr/article/2026092613213310543",
-    "src": "아시아경제",
-    "time": "2026-09-26T04:34:54Z"
-   },
-   {
-    "title": "中, 필리핀과 해상갈등 속 남중국해서 이틀간 실탄사격",
-    "url": "https://www.yna.co.kr/view/AKR20260926029600083",
-    "src": "연합뉴스",
-    "time": "2026-09-26T04:28:52Z"
-   },
-   {
-    "title": "러 공습에 우크라 최대 제철소 멈췄다… 젤렌스키 “일상 자체가 표적”",
-    "url": "https://www.newscj.com/news/articleView.html?idxno=3435664",
-    "src": "천지일보",
-    "time": "2026-09-26T04:17:41Z"
-   },
-   {
-    "title": "CNN 백악관 출입 다시 허용…미 주요 방송사 공동 취재 재개",
-    "url": "https://www.kado.net/news/articleView.html?idxno=2074802",
-    "src": "kado.net",
-    "time": "2026-09-26T03:23:49Z"
-   },
-   {
-    "title": "백악관, CNN '에어포스원 탑승' 차단…공동취재단 운영 또 차질",
-    "url": "https://www.yna.co.kr/view/AKR20260926027300009",
-    "src": "연합뉴스",
-    "time": "2026-09-26T03:01:24Z"
-   },
-   {
-    "title": "트럼프, 이란 ‘7일 휴전안’ 거부…선거 후 폭격 가능성 열어",
-    "url": "https://www.hani.co.kr/arti/international/arabafrica/1279505.html",
+    "title": "중국 연안 닿는다…일 자위대, 미일 연합 훈련서 공격 미사일 전개키로",
+    "url": "https://www.hani.co.kr/arti/international/asiapacific/1279519.html",
     "src": "한겨레",
-    "time": "2026-09-26T01:59:00Z"
+    "time": "2026-09-26T08:21:00Z"
    },
    {
-    "title": "카자흐 해상훈련 중 장병 14명 사망…해군 부사령관 등 5명 체포",
-    "url": "http://www.haesanews.com/news/articleView.html?idxno=151413",
-    "src": "해사신문",
-    "time": "2026-09-26T01:52:50Z"
+    "title": "사우디 맞서고, 홍해 장악하는 후티반군···가죽 샌들 신은 후티는 어떻게 성장했나",
+    "url": "https://www.khan.co.kr/article/202609261717001",
+    "src": "경향신문",
+    "time": "2026-09-26T08:17:00Z"
+   },
+   {
+    "title": "“한국 거쳐 간 최악의 사고, 중국엔 ‘선물’”…사라진 F-35 부품 정체는? [밀리터리+]",
+    "url": "https://nownews.seoul.co.kr/news/newsView.php?id=20260926601004",
+    "src": "나우뉴스",
+    "time": "2026-09-26T08:05:29Z"
+   },
+   {
+    "title": "시진핑은 왜 ‘인민복’ 입었나...미중 정상회담 ‘복식 외교’",
+    "url": "https://www.sedaily.com/article/20095063",
+    "src": "서울경제",
+    "time": "2026-09-26T07:52:16Z"
+   },
+   {
+    "title": "미스 유니버스 무대서 1.5m 구멍에 추락…자메이카 대표, 뇌 손상으로 소송",
+    "url": "https://v.daum.net/v/y23ILN0Hjx",
+    "src": "v.daum.net",
+    "time": "2026-09-26T07:01:30Z"
+   },
+   {
+    "title": "미·중 정상 옆 꿰찬 젠슨 황·머스크…만찬 자리에 담긴 AI 전쟁",
+    "url": "https://www.hankyung.com/article/202609266583i",
+    "src": "hankyung.com",
+    "time": "2026-09-26T06:13:07Z"
+   },
+   {
+    "title": "트럼프 또 취재 방해…백악관, CNN에 ‘전용기 동승’ 허용 않기로",
+    "url": "https://www.hani.co.kr/arti/international/america/1279514.html",
+    "src": "한겨레",
+    "time": "2026-09-26T05:35:00Z"
+   },
+   {
+    "title": "레오 14세 교황 “노트르담 대성당의 재건, 환대와 참여의 본보기가 되어야 합니다”",
+    "url": "https://www.vaticannews.va/ko/pope/news/2026-09/papa-viaggio-francia.html",
+    "src": "Vatican News",
+    "time": "2026-09-26T05:33:23Z"
+   },
+   {
+    "title": "현대차 사랑하던 미스 자메이카, 어쩌다…무대 추락 뒤 뇌손상",
+    "url": "https://v.daum.net/v/U03X5QTsjN",
+    "src": "v.daum.net",
+    "time": "2026-09-26T05:04:39Z"
    }
   ],
   "tech": [
    {
-    "title": "RLUSD 6624개, XRP 앞섰다…AI 결제는 초기 단계",
-    "url": "https://www.tokenpost.kr/news/cryptocurrency/414412",
-    "src": "tokenpost.kr",
-    "time": "2026-09-26T04:18:15Z"
-   },
-   {
-    "title": "[오후 뉴스브리핑] XRP 현물 ETF 하루 2264만달러 순유입 外",
-    "url": "https://www.tokenpost.kr/news/briefing/414387",
-    "src": "토큰포스트",
-    "time": "2026-09-26T03:01:30Z"
-   },
-   {
-    "title": "\"공짜 데이터는 없다\"…빅테크, '데이터 모트' 걸어 잠갔다",
-    "url": "https://v.daum.net/v/20260926120115658",
+    "title": "“가전 소재에서 AI 핵심으로”… 몸값 치솟는 CCL ‘증설 전쟁’",
+    "url": "https://v.daum.net/v/20260926180313959",
     "src": "v.daum.net",
-    "time": "2026-09-26T03:01:15Z"
+    "time": "2026-09-26T09:03:00Z"
    },
    {
-    "title": "오픈AI도 전모 모른다…챗GPT, 사용자 이미지 53장 유출",
-    "url": "https://v.daum.net/v/20260926111639155",
+    "title": "카이스트 ‘인재배출’ MIT·구글 제쳤다…15위→3위 ‘수직 상승’",
+    "url": "https://v.daum.net/v/20260926175207763",
     "src": "v.daum.net",
-    "time": "2026-09-26T02:16:39Z"
+    "time": "2026-09-26T08:52:00Z"
    },
    {
-    "title": "2억7500만달러(약 3732억원) 가상자산 선물 청산…롱·숏 비슷",
-    "url": "https://www.tokenpost.kr/news/cryptocurrency/414367",
+    "title": "XRP 1.70달러 상회 계약 32센트…칼시 시장",
+    "url": "https://www.tokenpost.kr/news/cryptocurrency/414472",
     "src": "토큰포스트",
-    "time": "2026-09-26T01:41:51Z"
+    "time": "2026-09-26T08:37:49Z"
    },
    {
-    "title": "가트너 \"2029년까지 VM웨어 고객 55% 이전 고려\"...대체 인프라 검토",
-    "url": "https://zdnet.co.kr/view/?no=20260926030632",
-    "src": "zdnet.co.kr",
-    "time": "2026-09-26T01:00:05Z"
+    "title": "\"AI, 10억명 사망 가져올 수 있어\"…빌게이츠의 경고",
+    "url": "https://www.edaily.co.kr/News/Read?newsId=02161526645584056&mediaCodeNo=257",
+    "src": "edaily.co.kr",
+    "time": "2026-09-26T07:50:13Z"
    },
    {
-    "title": "코스피·가상자산 거래 격차 19배→8배...반년만에 축소",
-    "url": "https://www.digitalasset.works/news/articleView.html?idxno=43193",
-    "src": "디지털애셋",
-    "time": "2026-09-26T01:00:00Z"
-   },
-   {
-    "title": "애플 사상 최고 종가…미 3대 지수 상승에도 가상자산주 하락",
-    "url": "https://www.tokenpost.kr/news/market/414354",
+    "title": "RLUSD 24억달러대…XRPL 스테이블코인 7일새 6.15% 증가",
+    "url": "https://www.tokenpost.kr/news/cryptocurrency/414458",
     "src": "토큰포스트",
-    "time": "2026-09-26T00:57:58Z"
+    "time": "2026-09-26T07:41:45Z"
    },
    {
-    "title": "[선물 고수 PICK] XRP 달러마진 포지션 4.05%p 급증...솔라나 달러 계좌 4.83%p 급감",
-    "url": "https://www.tokenpost.kr/news/cryptocurrency/414337",
+    "title": "비트코인 25억2000만달러 거래소 이탈…ETF는 순유입",
+    "url": "https://www.tokenpost.kr/news/cryptocurrency/414443",
     "src": "토큰포스트",
-    "time": "2026-09-26T00:15:36Z"
+    "time": "2026-09-26T06:37:49Z"
+   },
+   {
+    "title": "말 못하는 AI '제브'가 실리콘밸리 흔들었다...\"일주일 새 몸값 50배 뛰어\"",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=215675",
+    "src": "AI타임스",
+    "time": "2026-09-26T06:30:49Z"
+   },
+   {
+    "title": "비트코인 9월 8만7500달러 도달 확률 22%로 하락…공식 화면은 24%",
+    "url": "https://www.tokenpost.kr/news/cryptocurrency/414440",
+    "src": "토큰포스트",
+    "time": "2026-09-26T06:21:20Z"
+   },
+   {
+    "title": "美, 결국 中에 밀렸다...AI 인재 경쟁서 韓 '깜짝 4위'",
+    "url": "https://v.daum.net/v/20260926180244942",
+    "src": "v.daum.net",
+    "time": "2026-09-26T09:02:00Z"
+   },
+   {
+    "title": "불과 11살·꿈은 기관사…한국 천재 꺾고 금 따낸 日 게임 신동",
+    "url": "https://v.daum.net/v/20260926135510909",
+    "src": "v.daum.net",
+    "time": "2026-09-26T04:55:10Z"
+   },
+   {
+    "title": "“머릿속에 뇌가 두 개였다고?”…수억 년 전 합쳐진 인간 뇌의 비밀",
+    "url": "https://v.daum.net/v/xbfkdl8ByG",
+    "src": "v.daum.net",
+    "time": "2026-09-26T04:54:00Z"
+   },
+   {
+    "title": "“AI 해커가 달려드는데 손으로 막겠다고?”…‘AI 대 AI’ 사이버전쟁 시작됐다",
+    "url": "https://v.daum.net/v/20260926133903728",
+    "src": "v.daum.net",
+    "time": "2026-09-26T04:39:00Z"
    },
    {
     "title": "NASA 로버, 화성 분화구서 고대 지하수 흔적 발견 [우주로 간다]",
     "url": "https://zdnet.co.kr/view/?no=20260926073848",
     "src": "지디넷코리아",
     "time": "2026-09-26T00:00:03Z"
+   },
+   {
+    "title": "사하라 사막 한복판에 '해골'과 '눈'이 있다고? [우주서 본 지구]",
+    "url": "https://v.daum.net/v/KbxNC6SrAM",
+    "src": "v.daum.net",
+    "time": "2026-09-25T23:01:49Z"
    },
    {
     "title": "삼전, 추석 후엔 30만전자?… 과거 22년 주가 공식보니",
@@ -244,24 +274,6 @@
     "url": "https://v.daum.net/v/GQlxUvPKyc",
     "src": "v.daum.net",
     "time": "2026-09-24T09:01:04Z"
-   },
-   {
-    "title": "‘온난화때문에 인류 멸종’은 옛말…진짜 위협 따로 있다는데",
-    "url": "https://v.daum.net/v/W9A083aehu",
-    "src": "v.daum.net",
-    "time": "2026-09-24T08:21:03Z"
-   },
-   {
-    "title": "위성 15기 싣고 우주로…미리보는 누리호 5차 발사",
-    "url": "https://v.daum.net/v/4fG1PfCEGY",
-    "src": "v.daum.net",
-    "time": "2026-09-24T04:47:31Z"
-   },
-   {
-    "title": "제 2의 유전자 가위 발견?...앤트로픽 클로드, 새 효소 시스템 발견",
-    "url": "https://zdnet.co.kr/view/?no=20260924080306",
-    "src": "지디넷코리아",
-    "time": "2026-09-23T23:50:41Z"
    }
   ],
   "edu": [],
@@ -273,58 +285,40 @@
   "medical": [],
   "health": [
    {
-    "title": "매일 한 줌 먹었을 뿐인데… 60대 혈관질환 위험 40% 낮춘 ‘보약 음식’",
-    "url": "https://www.news-wa.com/article/life/health/2026/09/24/20260924500021",
-    "src": "news-wa.com",
-    "time": "2026-09-26T03:43:00Z"
+    "title": "[건강 100세를 위하여] B형간염, 간수치 정상이어도 ‘바이러스량’ 높으면 적극 치료해야",
+    "url": "https://www.ggmedinews.com/news/articleView.html?idxno=6875",
+    "src": "경기메디뉴스",
+    "time": "2026-09-26T08:21:35Z"
    },
    {
-    "title": "배에 불룩한 덩어리 방치했다간 ... 장 괴사까지 부르는 ‘탈장’ 주의",
-    "url": "https://www.edaily.co.kr/News/Read?newsId=01800726645584056&mediaCodeNo=257",
-    "src": "edaily.co.kr",
-    "time": "2026-09-26T00:26:02Z"
+    "title": "뼈 건강에는 근력운동이 최고?…골밀도 높이는 운동 살펴보니",
+    "url": "https://kormedi.com/2873071/",
+    "src": "코메디닷컴",
+    "time": "2026-09-26T08:05:00Z"
    },
    {
-    "title": "청소년기 비만, 생물학적 노화 앞당긴다… 장기 추적 연구 입증",
-    "url": "https://news.hidoc.co.kr/news/articleView.html?idxno=67972",
+    "title": "잡채보다 '탄수화물' 많은 음식 4가지… \"닭강정도 예외 아니야\"",
+    "url": "https://news.hidoc.co.kr/news/articleView.html?idxno=67730",
     "src": "하이닥",
-    "time": "2026-09-26T00:00:00Z"
+    "time": "2026-09-26T08:00:00Z"
    },
    {
-    "title": "돈 관리도 잘하는데, 자꾸 '깜빡깜빡'...전원주도 앓는 이 질환 뭐길래",
-    "url": "https://www.mt.co.kr/thebio/2026/09/26/2026092309320017599",
-    "src": "머니투데이",
-    "time": "2026-09-25T23:16:00Z"
+    "title": "12세 때 스마트폰 가진 아이, 2년 뒤 폭식 위험 67% 높았다",
+    "url": "https://m.healthcaren.com/news/news_article_yong.jsp?mn_idx=583769",
+    "src": "헬스케어N",
+    "time": "2026-09-26T07:55:35Z"
    },
    {
-    "title": "“계란은 죄가 없다”… 췌장 망가뜨리는 아침 식사 최악의 조합, 따로 있었다",
-    "url": "https://www.news-wa.com/article/life/health/2026/09/25/20260925500026",
-    "src": "news-wa.com",
-    "time": "2026-09-25T23:10:00Z"
+    "title": "‘우유 대신’ 아몬드 음료 마시기 전, 따져봐야 할 것",
+    "url": "https://health.chosun.com/site/data/html_dir/2026/09/22/2026092203407.html",
+    "src": "헬스조선",
+    "time": "2026-09-26T05:00:00Z"
    },
    {
-    "title": "알록달록 피망 효능 4가지… “눈 건강 챙기고 염증 완화에 도움”",
-    "url": "https://news.hidoc.co.kr/news/articleView.html?idxno=67823",
-    "src": "하이닥",
-    "time": "2026-09-25T23:00:00Z"
-   },
-   {
-    "title": "\"냄새나는 김치통에 '이 채소' 썰어서 넣어보세요\"... 30년차 주부도 이건 몰랐다며 놀랍니다",
-    "url": "https://www.ardentnews.co.kr/news/articleView.html?idxno=19596",
-    "src": "아던트뉴스",
-    "time": "2026-09-25T22:00:00Z"
-   },
-   {
-    "title": "유행철 전인데 벌써 작년 넘었다…고령층 RSV 예방 필요성 커져",
-    "url": "https://v.daum.net/v/WGWQC8lwGz",
-    "src": "v.daum.net",
-    "time": "2026-09-25T21:21:29Z"
-   },
-   {
-    "title": "[월드 프리즘] “죽음은 순간이 아니라 과정이다”…번개 맞은 의사의 임사체험, 그리고 몸이 겪는 놀라운 변화들",
-    "url": "https://www.wikileaks-kr.org/news/articleView.html?idxno=192443",
-    "src": "위키리크스한국",
-    "time": "2026-09-25T21:03:41Z"
+    "title": "운동할 때 속옷 입을까 말까...\"수건서 성병 옮았다\" 괴담에 '노팬티 탓' 공방까지 [헬스톡]",
+    "url": "https://www.fnnews.com/news/202609260936013282",
+    "src": "파이낸셜뉴스",
+    "time": "2026-09-26T05:00:00Z"
    }
   ],
   "ai": [],
