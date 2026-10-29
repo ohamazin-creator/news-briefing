@@ -1,189 +1,243 @@
 {
- "updatedAt": "2026-10-28T00:19:10.543Z",
+ "updatedAt": "2026-10-29T00:40:30.257Z",
  "requests": 19,
- "total": 54,
+ "total": 51,
  "sections": {
   "politics": [],
   "economy": [
    {
-    "title": "취임 4년 이재용, 차기 먹거리로 ‘로봇’ 구상…내부 갈등·책임경영 과제",
-    "url": "https://www.hani.co.kr/arti/economy/marketing/1284469.html",
-    "src": "한겨레",
-    "time": "2026-10-27T12:11:00Z"
-   },
-   {
-    "title": "‘게임 성능 제한’ 고지 안 한 삼성전자에 200억대 과징금",
-    "url": "https://www.khan.co.kr/article/202610272056015",
-    "src": "경향신문",
-    "time": "2026-10-27T11:56:00Z"
-   },
-   {
-    "title": "SK하이닉스 ‘솔리다임 상장 사태’가 K증시에 남긴 교훈",
-    "url": "https://www.khan.co.kr/article/202610272037005",
-    "src": "경향신문",
-    "time": "2026-10-27T11:37:00Z"
-   },
-   {
-    "title": "EU 하이브리드 차량 수입 제한, 한국에도 불똥...쿼터 확보에 총력",
-    "url": "https://www.ytn.co.kr/_ln/0104_202610272009028927",
-    "src": "YTN",
-    "time": "2026-10-27T11:09:00Z"
+    "title": "'완공은 코앞인데…' 위례선 트램 내년 개통?",
+    "url": "https://news.bizwatch.co.kr/article/real_estate/2026/10/28/0030",
+    "src": "비즈워치",
+    "time": "2026-10-28T12:08:03Z"
    },
    {
     "title": "KBS 뉴스",
-    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8696682",
+    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8697911",
     "src": "KBS 뉴스",
-    "time": "2026-10-27T10:53:00Z"
+    "time": "2026-10-28T12:07:00Z"
    },
    {
-    "title": "금감원 'JYP 공개매수' 예의주시‥\"불공정거래 의심 시 조사착수\"",
-    "url": "https://imnews.imbc.com/news/2026/econo/article/6861135_36932.html",
-    "src": "MBC 뉴스",
-    "time": "2026-10-27T10:28:28Z"
+    "title": "\"K바이오 기술 한자리에\"…글로벌 협력 큰 장 섰다",
+    "url": "https://news.bizwatch.co.kr/article/healthcare/2026/10/28/0016",
+    "src": "비즈워치",
+    "time": "2026-10-28T11:39:03Z"
    },
    {
-    "title": "‘후쿠시마 같은 동시사고’ 검증 논란 여전한데…고리 3·4호기 수명연장 허가",
-    "url": "https://www.khan.co.kr/article/202610271926001",
+    "title": "구글·애플 ‘인앱결제 강제’ 과징금 637억원 확정",
+    "url": "https://www.khan.co.kr/article/202610282031035",
     "src": "경향신문",
-    "time": "2026-10-27T10:26:00Z"
+    "time": "2026-10-28T11:31:00Z"
    },
    {
-    "title": "“중국 AI 투자 거품 이미 터졌다”…주요기업 시총 넉달 새 635조원 증발",
-    "url": "https://www.hani.co.kr/arti/international/china/1284399.html",
+    "title": "15년 지난 보증부 부실채권 4.9조원 ‘소각’",
+    "url": "https://www.khan.co.kr/article/202610282025015",
+    "src": "경향신문",
+    "time": "2026-10-28T11:25:00Z"
+   },
+   {
+    "title": "이정재·정우성 투자 정보로 12.5억 부당이득…증선위, 관련자 고발",
+    "url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4441706",
+    "src": "연합인포맥스",
+    "time": "2026-10-28T10:29:05Z"
+   },
+   {
+    "title": "하이닉스 “2030년까지 반도체 공급부족”…4분기 ‘영업익 100조’ 전망도",
+    "url": "https://www.hani.co.kr/arti/economy/marketing/1284680.html",
     "src": "한겨레",
-    "time": "2026-10-27T09:51:00Z"
+    "time": "2026-10-28T10:24:00Z"
    },
    {
-    "title": "[약업신문]한미약품, 3분기 누적 매출 1조 2000억원 돌파…안정적 성장세 지속",
-    "url": "http://www.yakup.com/news/index.html?mode=view&cat=12&nid=334362",
-    "src": "약업신문",
-    "time": "2026-10-27T09:39:00Z"
-   },
-   {
-    "title": "금감원, '日 자본 JYP 공개매수'에 \"매우 이례적...투자 주의해야\"",
-    "url": "https://www.ytn.co.kr/_ln/0102_202610271834329662",
+    "title": "\"전문직 인재로 속여 중국인 40명 일본에 입국 알선 브로커 체포\"",
+    "url": "https://www.ytn.co.kr/_ln/0104_202610281835333250",
     "src": "YTN",
-    "time": "2026-10-27T09:34:00Z"
+    "time": "2026-10-28T09:35:00Z"
    }
   ],
   "society": [
    {
-    "title": "조현 “미, 북미대화에 한국이 너무 앞서가지 않길 바라는 입장”",
-    "url": "https://www.hani.co.kr/arti/politics/politics_general/1284481.html",
-    "src": "한겨레",
-    "time": "2026-10-27T12:14:00Z"
-   },
-   {
-    "title": "민주당, 헌정사 첫 대법원장 국정조사 결정",
-    "url": "https://www.hani.co.kr/arti/politics/politics_general/1284476.html",
-    "src": "한겨레",
-    "time": "2026-10-27T12:11:00Z"
-   },
-   {
-    "title": "이태원 참사 대통령 지시 55분 뒤에야 전파…“행안부, 재난 주관 회피”",
-    "url": "https://www.hani.co.kr/arti/society/society_general/1284456.html",
-    "src": "한겨레",
-    "time": "2026-10-27T12:11:00Z"
-   },
-   {
-    "title": "메가프로젝트에 원전심사도 속도전…40년 노후원전 치명적 위험 ‘외면’",
-    "url": "https://www.hani.co.kr/arti/society/environment/1284452.html",
-    "src": "한겨레",
-    "time": "2026-10-27T11:49:00Z"
-   },
-   {
-    "title": "이건 가짜!…김포 애기봉 스벅 ‘북 자주포 뷰’ 사진은 AI 합성",
-    "url": "https://www.hani.co.kr/arti/politics/defense/1284428.html",
-    "src": "한겨레",
-    "time": "2026-10-27T11:37:00Z"
-   },
-   {
-    "title": "[단독]미국, 전작권 평가에 ‘통신 성능 강화’ 요구…이 대통령 ‘임기 내 전환’ 늦어질 우려",
-    "url": "https://www.khan.co.kr/article/202610271922001",
+    "title": "이 대통령 “다문화 가족 우대까지 할 필요성 큰지 검토”",
+    "url": "https://www.khan.co.kr/article/202610282137015",
     "src": "경향신문",
-    "time": "2026-10-27T10:22:00Z"
+    "time": "2026-10-28T12:37:00Z"
+   },
+   {
+    "title": "‘술자리 녹취’ 파문 이후 흔들리는 지지세…장동혁 ‘강경 보수 노선’ 유지·변경 기로",
+    "url": "https://www.khan.co.kr/article/202610282121015",
+    "src": "경향신문",
+    "time": "2026-10-28T12:21:00Z"
+   },
+   {
+    "title": "‘살인범 장윤기’ 아빠 “그렇게 착한 아들이”…‘리얼돌 폐기’ 묻자 되레 언성",
+    "url": "https://www.hani.co.kr/arti/area/honam/1284696.html",
+    "src": "한겨레",
+    "time": "2026-10-28T12:17:00Z"
+   },
+   {
+    "title": "이 대통령 ‘외국인 노동자 발언’ 비판 확산…“언론 탓 전에 사과 먼저”",
+    "url": "https://www.hani.co.kr/arti/politics/politics_general/1284701.html",
+    "src": "한겨레",
+    "time": "2026-10-28T12:15:00Z"
+   },
+   {
+    "title": "장윤기 부친 “아들, 그런 일 저질렀다니 납득 안 돼···미안합니다”",
+    "url": "https://www.khan.co.kr/article/202610282046001",
+    "src": "경향신문",
+    "time": "2026-10-28T11:46:00Z"
    }
   ],
   "world": [
    {
-    "title": "“포퓰리즘 정치는 절대 오래 못 간다”…대선 결과에 공포 질린 브라질 증시",
-    "url": "https://www.mk.co.kr/news/world/12187527",
+    "title": "스페인 톨레도 인근서 고속열차 추돌…최소 30명 사망, 한국인 6명 경상",
+    "url": "https://www.hani.co.kr/arti/international/europe/1284705.html",
+    "src": "한겨레",
+    "time": "2026-10-28T12:22:00Z"
+   },
+   {
+    "title": "스페인 중부서 고속열차 충돌로 최소 30명 사망…한국인 6명 경상(종합2보)",
+    "url": "https://www.yna.co.kr/view/AKR20261028182453085",
+    "src": "연합뉴스",
+    "time": "2026-10-28T12:11:31Z"
+   },
+   {
+    "title": "한·호주 국방 수장 \"북·러 밀착 심화 대응\" 인태 평화 수호·안보 결속 강화",
+    "url": "https://www.fnnews.com/news/202610282035037329",
+    "src": "파이낸셜뉴스",
+    "time": "2026-10-28T12:02:35Z"
+   },
+   {
+    "title": "“푸틴씨 잘 지내고 계시죠?” …러시아와 절연했던 유럽, 돌연 태세 전환",
+    "url": "https://www.mk.co.kr/news/world/12188983",
     "src": "매일경제",
-    "time": "2026-10-27T10:26:13Z"
+    "time": "2026-10-28T11:46:07Z"
    },
    {
-    "title": "네타냐후 운명 가를 투표 당일···투표소엔 엇갈린 민심",
-    "url": "https://www.khan.co.kr/article/202610271921001",
+    "title": "러·우크라 올레시키 휴전 이틀째…위반 사례 0건",
+    "url": "https://www.yna.co.kr/view/AKR20261028191100108",
+    "src": "연합뉴스",
+    "time": "2026-10-28T11:39:28Z"
+   },
+   {
+    "title": "헤그세스, 美·아세안 방위협력체계 구축 제안‥군사적 역할 확대 강조",
+    "url": "https://imnews.imbc.com/news/2026/world/article/6861423_36925.html",
+    "src": "MBC 뉴스",
+    "time": "2026-10-28T11:00:43Z"
+   },
+   {
+    "title": "미·러, ‘1경8700조원’ 초대형 경제협력 논의···트럼프의 ‘당근책’ 통할까",
+    "url": "https://www.khan.co.kr/article/202610281654011",
     "src": "경향신문",
-    "time": "2026-10-27T10:21:00Z"
+    "time": "2026-10-28T10:43:00Z"
    },
    {
-    "title": "우크라이나 올레시키, 국지 휴전 돌입...풀까지 뜯어 먹으며 버틴 주민들",
-    "url": "https://www.bbc.com/korean/articles/c689zk8vv2g4o",
+    "title": "이스라엘 총선 ‘심판’ 없었다…네타냐후 진영, 과반은 실패할 듯",
+    "url": "https://www.hani.co.kr/arti/international/arabafrica/1284663.html",
+    "src": "한겨레",
+    "time": "2026-10-28T09:42:00Z"
+   },
+   {
+    "title": "미국 중간선거는 어떻게 치러지나? 쉽게 알아보는 선거 가이드",
+    "url": "https://www.bbc.com/korean/articles/crpdg5q9y8e3o",
     "src": "BBC",
-    "time": "2026-10-27T10:01:14Z"
+    "time": "2026-10-28T09:14:12Z"
    },
    {
-    "title": "타이완 매체 \"중국 대학생들, 국가주석 무기한 연임제 폐지 성명\"",
-    "url": "https://www.ytn.co.kr/_ln/0104_202610271832136843",
-    "src": "YTN",
-    "time": "2026-10-27T09:32:00Z"
-   },
-   {
-    "title": "베네수엘라 과도정부, 마차도 요란한 귀국에 \"쇼\" 비난",
-    "url": "https://www.ytn.co.kr/_ln/0104_202610271825215569",
-    "src": "YTN",
-    "time": "2026-10-27T09:25:00Z"
-   },
-   {
-    "title": "천막 속 7살, 총선 전날 ‘이스라엘 폭격’에 숨져…불도저로 민가도 밀려",
-    "url": "https://www.hani.co.kr/arti/international/arabafrica/1284415.html",
-    "src": "한겨레",
-    "time": "2026-10-27T09:12:00Z"
-   },
-   {
-    "title": "마크롱, 시위 정당성 문제 삼더니…“헌법상 권리” 선회",
-    "url": "https://www.hani.co.kr/arti/international/international_general/1284434.html",
-    "src": "한겨레",
-    "time": "2026-10-27T09:12:00Z"
-   },
-   {
-    "title": "세르비아 총선 승리한 ‘학생명단’엔 ‘기성 정치인 0명’…정치 실험 성공할까",
-    "url": "https://www.hani.co.kr/arti/international/international_general/1284409.html",
-    "src": "한겨레",
-    "time": "2026-10-27T08:39:00Z"
-   },
-   {
-    "title": "이집트 의회, 사우디 군사지원 승인…35년만 파병 가능성(종합)",
-    "url": "https://www.yna.co.kr/view/AKR20261027158200009",
-    "src": "연합뉴스",
-    "time": "2026-10-27T07:48:41Z"
-   },
-   {
-    "title": "홍콩 매체 \"中 5중전회서 중앙위원회 45명 제명 가능성\"",
-    "url": "https://www.yna.co.kr/view/AKR20261027147600083",
-    "src": "연합뉴스",
-    "time": "2026-10-27T07:31:36Z"
+    "title": "\"北~中 신압록강대교 개통 이후, 北으로 화물차 수백대 드나들어\"",
+    "url": "https://www.hankyung.com/article/2026102814241",
+    "src": "한국경제",
+    "time": "2026-10-28T09:01:55Z"
    }
   ],
   "tech": [
    {
-    "title": "AI 슬롭과 복제가 두려운 개발자들, 밸브가 직접 답했다",
-    "url": "https://www.inven.co.kr/webzine/news/?news=322622",
-    "src": "인벤",
-    "time": "2026-10-27T11:32:44Z"
+    "title": "XRP 레저 결제량, 28일 전날보다 45.1% 감소…사흘 증가세 꺾여",
+    "url": "https://www.tokenpost.kr/news/cryptocurrency/428562",
+    "src": "토큰포스트",
+    "time": "2026-10-28T11:51:00Z"
    },
    {
-    "title": "컴퓨터로 1만번 시뮬레이션 돌렸더니… “비트코인, 2033년 100만달러 돌파”",
-    "url": "https://www.blockmedia.co.kr/archives/1156795",
-    "src": "블록미디어",
-    "time": "2026-10-27T10:30:19Z"
+    "title": "\"이재용 재산의 3배라니\"…43세에 134조 거머쥔 중국 최고 부자의 정체",
+    "url": "https://www.asiae.co.kr/article/2026102818111394882",
+    "src": "아시아경제",
+    "time": "2026-10-28T09:18:09Z"
    },
    {
-    "title": "[단독] \"AI, 중국칩만으론 불안\"… 고성능 한국 D램 구하기 '혈안'",
-    "url": "https://www.mk.co.kr/news/business/12187432",
+    "title": "LG전자 \"2030년 홈 휴머노이드 진출\"…엔비디아와 로봇 개발 가속(종합)",
+    "url": "https://www.edaily.co.kr/News/Read?newsId=05825286645617512&mediaCodeNo=257",
+    "src": "이데일리",
+    "time": "2026-10-28T09:13:45Z"
+   },
+   {
+    "title": "“후배가 쓴 보고서, 대놓고 AI 썼네요”...이제 ‘사람 냄새’ 풍기는 기술이 돈",
+    "url": "https://www.mk.co.kr/news/it/12188762",
     "src": "매일경제",
-    "time": "2026-10-27T08:44:14Z"
+    "time": "2026-10-28T08:51:55Z"
+   },
+   {
+    "title": "10월 28일 퇴근길 팟캐스트 - 연준 금리 결정 대기 속 비트코인 8만달러 안착, 숏 청산 9932만달러",
+    "url": "https://www.tokenpost.kr/news/insights/428467",
+    "src": "토큰포스트",
+    "time": "2026-10-28T08:04:46Z"
+   },
+   {
+    "title": "XRP 10억개 11월 1일 에스크로 해제…매도량과는 달라",
+    "url": "https://www.tokenpost.kr/news/cryptocurrency/428472",
+    "src": "토큰포스트",
+    "time": "2026-10-28T08:02:24Z"
+   },
+   {
+    "title": "\"AI 전쟁 승패는 전력 확보\"…AI 빅테크, SMR 투자 나서는 이유",
+    "url": "https://www.mt.co.kr/industry/2026/10/28/2026102816250773356",
+    "src": "머니투데이",
+    "time": "2026-10-28T07:58:20Z"
+   },
+   {
+    "title": "방미통위, '인앱결제 강요' 구글·애플 과징금 637억 원 부과",
+    "url": "https://imnews.imbc.com/news/2026/econo/article/6861372_36932.html",
+    "src": "MBC 뉴스",
+    "time": "2026-10-28T07:35:13Z"
+   },
+   {
+    "title": "구글·애플 과징금 637억 부과 결정… 방미통위 “인앱결제 강제는 부당”",
+    "url": "https://www.mediatoday.co.kr/news/articleView.html?idxno=338050",
+    "src": "미디어오늘",
+    "time": "2026-10-28T07:32:03Z"
+   },
+   {
+    "title": "‘균열의 시대’ 천문학자의 조언 “모든 별은 ‘불안’에서 시작…우주를 보라”",
+    "url": "https://www.hani.co.kr/arti/society/society_general/1284585.html",
+    "src": "한겨레",
+    "time": "2026-10-28T06:58:00Z"
+   },
+   {
+    "title": "세계 최대 암모니아船 울산에 떴다…1.2㎞ 지하 배관으로 급유 성공",
+    "url": "https://www.hankyung.com/article/202610280778i",
+    "src": "한국경제",
+    "time": "2026-10-28T06:18:00Z"
+   },
+   {
+    "title": "너무나 사람같아 ‘섬뜩’…축대 기어 오르고 사다리 타는 휴머노이드",
+    "url": "https://www.khan.co.kr/article/202610281240001",
+    "src": "경향신문",
+    "time": "2026-10-28T03:40:00Z"
+   },
+   {
+    "title": "로킷헬스케어, 하버드와 신장 패치 연구…기능 보존 확인·임상 추진",
+    "url": "https://biz.chosun.com/science-chosun/bio/2026/10/28/YRJZTMEYQVBDPHKSYX76JYHIQM/",
+    "src": "Chosunbiz",
+    "time": "2026-10-28T00:43:00Z"
+   },
+   {
+    "title": "보톡스의 두 얼굴 [강석기의 과학풍경]",
+    "url": "https://www.hani.co.kr/arti/opinion/column/1284462.html",
+    "src": "한겨레",
+    "time": "2026-10-27T10:07:00Z"
+   },
+   {
+    "title": "\"AI 전력·용수 수요 폭증 … 자원관리 능력이 경쟁력\"",
+    "url": "https://www.mk.co.kr/news/economy/12187410",
+    "src": "매일경제",
+    "time": "2026-10-27T08:42:53Z"
    },
    {
     "title": "\"홀 불량률 백만분의 1도 안돼\"…中, 유리기판 수율 안정화 박차",
@@ -192,94 +246,16 @@
     "time": "2026-10-27T08:10:21Z"
    },
    {
-    "title": "케이사인, 삼성 DB 암호화 추가 수주...적용 시스템 확대",
-    "url": "https://www.thelec.kr/news/articleView.html?idxno=64318",
-    "src": "디일렉",
-    "time": "2026-10-27T07:39:48Z"
-   },
-   {
-    "title": "10주년 맞아 부활 예고? 컴투스 '데스티니 차일드: 어셈블' 티저 사이트 오픈",
-    "url": "https://www.inven.co.kr/webzine/news/?news=322619",
-    "src": "인벤",
-    "time": "2026-10-27T07:33:50Z"
-   },
-   {
-    "title": "네이버, 브룩필드와 12조원 AI인프라 계약…AI팩토리 본격 공략",
-    "url": "https://www.yna.co.kr/view/AKR20261027150700017",
-    "src": "연합뉴스",
-    "time": "2026-10-27T07:32:17Z"
-   },
-   {
-    "title": "로봇개 ‘스팟’ 이민단속 지원에 보스턴다이내믹스 직원들 반발",
-    "url": "https://www.hani.co.kr/arti/economy/car/1284387.html",
-    "src": "한겨레",
-    "time": "2026-10-27T07:00:00Z"
-   },
-   {
-    "title": "中 빅테크 알리바바·텐센트·바이트댄스, 삼전닉스에 D램 장기계약 ‘SOS’",
-    "url": "https://www.mk.co.kr/news/business/12187030",
-    "src": "매일경제",
-    "time": "2026-10-27T06:43:40Z"
-   },
-   {
-    "title": "마이크로소프트, 직원 6만명에 희망퇴직 실시…한국법인은 제외",
-    "url": "https://www.dailian.co.kr/news/view/1706773/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%86%8C%ED%94%84%ED%8A%B8-%EC%A7%81%EC%9B%90-6%EB%A7%8C%EB%AA%85-%ED%9D%AC%EB%A7%9D%ED%87%B4%EC%A7%81-2026",
-    "src": "데일리안",
-    "time": "2026-10-27T06:15:00Z"
+    "title": "K뷰티 주문 폭주에 리드타임 증가…화장품 공급망 납기 지연 비상",
+    "url": "https://m.etnews.com/20261027000295?obj=Tzo4OiJzdGRDbGFzcyI6Mjp7czo3OiJyZWZlcmVyIjtOO3M6NzoiZm9yd2FyZCI7czoxMzoid2ViIHRvIG1vYmlsZSI7fQ%3D%3D",
+    "src": "전자신문",
+    "time": "2026-10-27T07:30:00Z"
    },
    {
     "title": "우주 폭발 추적 망원경, 지구 대기권서 최후 맞는다 [우주로 간다]",
     "url": "https://zdnet.co.kr/view/?no=20261027140142",
     "src": "지디넷코리아",
     "time": "2026-10-27T05:09:12Z"
-   },
-   {
-    "title": "[사설]GPU 확보실적 강조하더니, 활용률은 절반에 그쳐",
-    "url": "https://www.asiae.co.kr/article/2026102709530656385",
-    "src": "아시아경제",
-    "time": "2026-10-27T02:00:00Z"
-   },
-   {
-    "title": "[속보] 오픈AI “수학·컴퓨터과학·물리학 수십년 난제 3개 풀었다”",
-    "url": "https://www.hani.co.kr/arti/international/america/1284301.html",
-    "src": "한겨레",
-    "time": "2026-10-26T23:00:00Z"
-   },
-   {
-    "title": "'모두의 AI 해킹' 시대 왔나…개인정보 820만건 탈취 일당 덜미",
-    "url": "https://zdnet.co.kr/view/?no=20261027074733",
-    "src": "지디넷코리아",
-    "time": "2026-10-26T22:47:33Z"
-   },
-   {
-    "title": "[단독]딥페이크·피싱·해킹…정부, 잇따른 AI 범죄 대응 체계 만든다",
-    "url": "https://www.mt.co.kr/tech/2026/10/27/2026102610031442122",
-    "src": "머니투데이",
-    "time": "2026-10-26T19:00:00Z"
-   },
-   {
-    "title": "걷는 운동 중요했네…5000보 미만은 치매·뇌졸중 확률 두배 더 높아",
-    "url": "https://www.mk.co.kr/news/it/12186394",
-    "src": "매일경제",
-    "time": "2026-10-26T13:44:38Z"
-   },
-   {
-    "title": "X’ 공개…유전자 분석 비용 낮춘다 < AI기술 < 기사본문",
-    "url": "https://www.aitimes.com/news/articleView.html?idxno=216683",
-    "src": "AI타임스",
-    "time": "2026-10-26T09:12:42Z"
-   },
-   {
-    "title": "우주판 '승리호' 뜬다…내년 누리호로 우주쓰레기 포획위성 발사",
-    "url": "https://www.yna.co.kr/view/AKR20261026150500017",
-    "src": "연합뉴스",
-    "time": "2026-10-26T08:26:24Z"
-   },
-   {
-    "title": "치매 발병 10년 늦춘다…韓신약 후보 봇물",
-    "url": "https://www.mk.co.kr/news/it/12186001",
-    "src": "매일경제",
-    "time": "2026-10-26T08:06:30Z"
    }
   ],
   "edu": [],
@@ -291,58 +267,64 @@
   "medical": [],
   "health": [
    {
-    "title": "‘첫째 낳고 바로 둘째 임신’이 여성 노화 가속화… 24개월 간격 둬라",
-    "url": "https://health.chosun.com/site/data/html_dir/2026/10/27/2026102703262.html",
-    "src": "헬스조선",
-    "time": "2026-10-27T11:30:00Z"
+    "title": "[건강칼럼] 고지혈증에 대한 오해와 진실",
+    "url": "https://www.idaegu.co.kr/news/articleView.html?idxno=563723",
+    "src": "대구신문",
+    "time": "2026-10-28T12:14:02Z"
    },
    {
-    "title": "간병인은 어떻게 돌봐야 할까? NCCN, 암 환자인 가족과 지인을 돌보기 위한 필수 가이드 첫 발간",
-    "url": "https://www.peopleview.co.kr/news/article.html?no=33798",
-    "src": "사람의 풍경",
-    "time": "2026-10-27T11:07:00Z"
-   },
-   {
-    "title": "연세암병원, PET 검사로 소세포폐암 예방적 뇌방사선치료 효과 예측 가능성 확인 外",
-    "url": "https://www.newsmp.com/news/articleView.html?idxno=258956",
-    "src": "의약뉴스",
-    "time": "2026-10-27T10:09:41Z"
-   },
-   {
-    "title": "허리·무릎 아파 걷기 힘든 노인, ‘기억력’까지 살펴야 하는 이유",
-    "url": "https://digitalchosun.dizzo.com/site/data/html_dir/2026/10/27/2026102780187.html",
-    "src": "디지틀조선일보",
-    "time": "2026-10-27T08:49:00Z"
-   },
-   {
-    "title": "치매 치료제는 뇌에서 어떻게 작용할까…무선 신경칩으로 변화 추적했더니",
-    "url": "https://www.biotimes.co.kr/news/articleView.html?idxno=35652",
-    "src": "바이오타임즈",
-    "time": "2026-10-27T08:10:26Z"
-   },
-   {
-    "title": "“맥주만 끊으면 괜찮을까?”…통풍 위험 높이는 식품 4가지",
-    "url": "https://kormedi.com/2892597/",
+    "title": "“혈당 오를까봐 못 먹겠다?”…영양사가 권한 살 빼고 당 관리에 좋은 과일 4가지",
+    "url": "https://kormedi.com/2893304/",
     "src": "코메디닷컴",
-    "time": "2026-10-27T08:01:00Z"
+    "time": "2026-10-28T12:09:00Z"
    },
    {
-    "title": "KAIST, '무선 신경칩'으로 치매 치료제 투여 후 뇌 변화 실시간 추적",
-    "url": "https://www.etnews.com/20261027000415",
-    "src": "전자신문",
-    "time": "2026-10-27T07:56:13Z"
+    "title": "90세까지 건강하게 살았다면, 치매 위험 유전자도 ‘졸업’일까",
+    "url": "https://www.dementianews.co.kr/news/articleView.html?idxno=11243",
+    "src": "디멘시아뉴스",
+    "time": "2026-10-28T10:57:51Z"
    },
    {
-    "title": "뇌종양인 줄 알았는데⋯80대 남성 뇌 속에서 자란 '검은 곰팡이'",
-    "url": "https://kormedi.com/2892940/",
-    "src": "코메디닷컴",
-    "time": "2026-10-27T07:16:00Z"
+    "title": "J&H Bio, 'NAD⁺·세포 건강'에 주목",
+    "url": "http://www.bokuennews.com/m/m_article.html?no=286281",
+    "src": "보건신문",
+    "time": "2026-10-28T10:26:42Z"
    },
    {
-    "title": "고혈압약 3종 먹어도 혈압 180⋯25세 여성, 5년간 몰랐던 원인",
-    "url": "https://kormedi.com/2892848/",
-    "src": "코메디닷컴",
-    "time": "2026-10-27T06:26:00Z"
+    "title": "이왕재 박사가 밝힌 뇌 위축과 비타민C의 충격적인 관계 (영상)",
+    "url": "https://www.insight.co.kr/news/579551",
+    "src": "인사이트",
+    "time": "2026-10-28T07:40:18Z"
+   },
+   {
+    "title": "독감 심하게 앓고 ‘휘청’…탈수·기력 저하로 어지럼증 나타날 수 있어",
+    "url": "https://www.koreahealthlog.com/news/articleView.html?idxno=59685",
+    "src": "코리아헬스로그",
+    "time": "2026-10-28T06:25:19Z"
+   },
+   {
+    "title": "“항암 날 혈압이 높게 나왔다면?”…치료 연기 여부, 한 번의 수치로 결정하지 않는다",
+    "url": "https://www.youthassembly.kr/news/1022945",
+    "src": "유스연합",
+    "time": "2026-10-28T06:16:15Z"
+   },
+   {
+    "title": "이즈온의원 개원… 쁘띠·안티에이징 진료 및 '원더트리플' 도입",
+    "url": "http://www.bokuennews.com/m/m_article.html?no=286257",
+    "src": "보건신문",
+    "time": "2026-10-28T06:09:00Z"
+   },
+   {
+    "title": "23년간 혈세 200억 쏟았는데… \"에이즈 방역, 피임도구 무차별 살포뿐\"",
+    "url": "https://www.imaeil.com/page/view/2026102814322743182",
+    "src": "매일신문",
+    "time": "2026-10-28T06:05:45Z"
+   },
+   {
+    "title": "혈액검사로 알츠하이머병 진행 단계 예측한다…국내 연구팀, 새 단백질 지표 확인",
+    "url": "https://www.medicaldaily.co.kr/news/122784",
+    "src": "의약일보",
+    "time": "2026-10-28T06:01:00Z"
    }
   ],
   "ai": [],
